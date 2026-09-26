@@ -1,0 +1,2404 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arcana — Patch Notes</title>
+<style>
+:root {
+  --ground: #0f1219; --card: #161b26; --edge: #262d3d; --ink: #e8e4d8; --dim: #a7a294;
+  --faint: #6f6b62; --gold: #e2b85a; --gold-soft: #e2b85a22; --new: #9fd38a; --old: #c9877a;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--ground); color: var(--ink);
+  font: 16px/1.6 ui-sans-serif, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+a { color: var(--gold); }
+.wrap { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 40px;
+  max-width: 1120px; margin: 0 auto; padding: 32px 20px 80px; }
+nav { position: sticky; top: 24px; align-self: start; }
+nav .brand { font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gold);
+  font-size: 13px; margin-bottom: 18px; }
+nav a { display: block; padding: 7px 12px; border-radius: 6px; color: var(--dim); text-decoration: none;
+  font-variant-numeric: tabular-nums; }
+nav a:hover, nav a:focus-visible { background: var(--card); color: var(--ink); outline: none; }
+nav a.latest { color: var(--ink); background: var(--gold-soft); }
+main { min-width: 0; }
+article { min-width: 0; overflow-wrap: anywhere; background: var(--card); border: 1px solid var(--edge); border-radius: 12px;
+  padding: 36px 44px; margin-bottom: 32px; }
+article > :first-child { margin-top: 0; }
+h1 { font-size: 30px; line-height: 1.2; margin: 0 0 8px; text-wrap: balance; }
+h2 { font-size: 21px; color: var(--gold); margin: 40px 0 12px; padding-top: 22px;
+  border-top: 1px solid var(--edge); }
+h3 { font-size: 17px; margin: 28px 0 8px; }
+p { max-width: 70ch; color: var(--ink); }
+p strong, li strong { color: #fff; }
+em { color: var(--dim); }
+hr { display: none; }
+ul { padding-left: 20px; }
+li { margin: 5px 0; max-width: 72ch; }
+li.change { list-style: none; margin-left: -20px; display: grid;
+  grid-template-columns: minmax(150px, 28%) minmax(0, 1fr) auto minmax(0, 1.2fr); gap: 4px 12px;
+  align-items: baseline; padding: 9px 12px; border-radius: 8px; background: #0f131c; max-width: none; }
+li.change .what strong { font-size: 12px; letter-spacing: .08em; color: var(--dim); }
+li.change .old { color: var(--old); }
+li.change .arrow { color: var(--faint); }
+li.change .new { color: var(--new); }
+li.change .new strong { color: var(--new); }
+table { border-collapse: collapse; width: 100%; margin: 14px 0; font-size: 15px;
+  font-variant-numeric: tabular-nums; display: block; overflow-x: auto; }
+th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--edge); white-space: nowrap; }
+th { color: var(--dim); font-weight: 600; font-size: 13px; letter-spacing: .04em; }
+code { background: #0b0e14; border: 1px solid var(--edge); padding: 1px 6px; border-radius: 5px;
+  font-size: 14px; }
+.version-tag { display: inline-block; font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--gold); border: 1px solid var(--gold); border-radius: 999px; padding: 2px 10px;
+  margin-bottom: 14px; }
+@media (max-width: 820px) {
+  .wrap { grid-template-columns: minmax(0, 1fr); gap: 16px; padding: 16px; }
+  nav { position: static; display: flex; flex-wrap: wrap; gap: 4px; }
+  nav .brand { width: 100%; margin-bottom: 4px; }
+  article { padding: 22px 18px; }
+  li.change { grid-template-columns: 1fr; }
+  li.change .arrow { display: none; }
+  li.change .old::after { content: " →"; color: var(--faint); }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav aria-label="Versions">
+<div class="brand">Arcana · Patch Notes</div>
+<a href="#v1-6" class="latest">1.6 · latest</a>
+<a href="#v1-5">1.5</a>
+<a href="#v1-4-2">1.4.2</a>
+<a href="#v1-4-1">1.4.1</a>
+<a href="#v1-4">1.4</a>
+<a href="#v1-3-8">1.3.8</a>
+<a href="#v1-3-7">1.3.7</a>
+<a href="#v1-3-6">1.3.6</a>
+<a href="#v1-3-5">1.3.5</a>
+<a href="#v1-3-4">1.3.4</a>
+<a href="#v1-3-3">1.3.3</a>
+<a href="#v1-3-2">1.3.2</a>
+<a href="#v1-3-1">1.3.1</a>
+<a href="#v1-3">1.3</a>
+<a href="#v1-2-2">1.2.2</a>
+<a href="#v1-2-1">1.2.1</a>
+<a href="#v1-2">1.2</a>
+<a href="#v1-1-1">1.1.1</a>
+<a href="#v1-1">1.1</a>
+<a href="#v1-0-5">1.0.5</a>
+<a href="#v1-0-3">1.0.3</a>
+<a href="#v1-0-2">1.0.2</a>
+<a href="#v1-0-1">1.0.1</a>
+</nav>
+<main>
+<article id="v1-6"><span class="version-tag">Latest</span><h1>Arcana 1.6 — The Dead and the Siege</h1>
+<p>Released September 2026. <strong>Your launcher updates you when you reconnect.</strong></p>
+<h2>The dead</h2>
+<ul>
+<li><strong>THE DEAD WALK</strong> They come in from the sea at night, slow and many, and they hunt as one: noise and sight draw
+  more of them. By day they're sluggish; by night they move with purpose. Most of what walks the island is now
+  the dead. The island's own creatures keep to their home regions.</li>
+<li><strong>NO SKELETONS</strong> and far fewer of vanilla's other monsters.</li>
+</ul>
+<h2>Your home</h2>
+<ul>
+<li><strong>THEY COME TO YOU</strong> The dead are drawn to homes. The bigger, louder, richer and brighter yours is, the more
+  come, and in numbers they break through wood and glass fast, and stone slowly. Your Cornerstone tells you how
+  strongly your home draws them. Nothing breaks while nobody is home.</li>
+<li><strong>FORTIFY</strong> Every block has a toughness. Greave's stone yard crew reinforces and repairs your walls.</li>
+<li><strong>DEFEND</strong> Turrets on your power grid (at home and at your wild workshops), barbed wire, barricades, spikes,
+  alarms and floodlights. Nought sells slave soldiers to guard a home for fourteen days.</li>
+</ul>
+<h2>Towns</h2>
+<ul>
+<li><strong>TOWNS HOLD</strong> The dead gather at the walls at night; archers on the wall walk shoot them down.</li>
+<li><strong>GOODS MOVE</strong> Towns produce, process and ship goods by wagon and boat. Other towns' potion shelves are now
+  stocked by shipments. Haul a sealed crate yourself for coin, or take an escort job.</li>
+</ul></article>
+<article id="v1-5"><h1>Arcana 1.5 — Gears and Current</h1>
+<p>Released September 2026. <strong>Your launcher updates you when you reconnect.</strong></p>
+<h2>Engineering</h2>
+<ul>
+<li><strong>A NEW PATH OF LEARNING</strong> Engineering is taught by masters across the island, one after another, starting
+  with the Mechanist in Asteryn's crafts quarter. Each teaches what the next builds on.</li>
+<li><strong>POWER</strong> Hand cranks, water wheels, steam boilers and engines, turbines, wind, sun, and more, all measured
+  in real watts and joules. Overloaded wires burn out; boilers can burst.</li>
+<li><strong>REAL WIRING</strong> Cables are chosen by copper size and voltage at a cable machine. Heavy machines run on
+  three phases, and a distribution board shows you how to balance them. The Mechanist's manual explains it all
+  in plain words.</li>
+<li><strong>MACHINES AND MULTIBLOCKS</strong> Furnaces, crushers, smelteries, presses, refineries and more, many of them
+  large structures you build to a plan, with a ghost outline to guide you.</li>
+<li><strong>LOGISTICS</strong> Crates, item pipes, sorters and the Register: one screen onto everything you store.</li>
+<li><strong>THE LAND</strong> Prospect for ore and oil under the island and drill it out. Dirty power leaves haze and stained
+  ground; reclaimers clean it, and blighted ground too.</li>
+<li><strong>BIGGER GOALS</strong> Power a town from your works and watch it light up; heal the island's blight; build a ship on
+  your own slipway.</li>
+</ul>
+<h2>Towns</h2>
+<ul>
+<li><strong>CURFEW</strong> After dark, towns expect you to have a room. Take one at the inn for the night, or rent one by the
+  week with a locker. The watch walks everyone else out.</li>
+</ul>
+<h2>Bosses</h2>
+<ul>
+<li><strong>MIDNIGHT</strong> Every story boss stands again at midnight (Italian time). A bell at each arena calls one back early,
+  for a price that's never worth it for loot alone.</li>
+<li><strong>ARENAS</strong> You're only held in a boss's arena while you're really fighting it, and clearing one never locks you
+  out of the others.</li>
+</ul>
+<h2>Classes</h2>
+<ul>
+<li><strong>NEW PATHS</strong> Each class has a new branch built on its own strength: Rage, Focus, Wounds or the Stillpoint.
+  Your old points are refunded, and every character gets one free respec.</li>
+</ul>
+<h2>Smaller things</h2>
+<ul>
+<li>Quivers can be widened at the Fletchery, and arrows are cheaper in bulk.</li>
+<li>Your horse's speed shows while you ride, and your tamed horse comes home with you on Recall.</li>
+<li>Engineering blocks drop when mined with the right tool.</li>
+</ul></article>
+<article id="v1-4-2"><h1>Arcana 1.4.2 — The Short Road</h1>
+<p>Released September 2026. <strong>Your launcher updates you when you reconnect.</strong></p>
+<ul>
+<li><strong>LOWER PING</strong> The server's public connection now runs through a relay in Europe instead of one far
+  away: roughly a third of the ping it had.</li>
+<li class="change"><span class="what"><strong>THE PLAY BUTTON FOLLOWS THE SERVER</strong></span><span class="old">The route change moved the server's port, and the Play button was
+  still knocking on the old one</span><span class="arrow">→</span><span class="new"><strong>It now looks up the server's current address each time.</strong></span></li>
+</ul></article>
+<article id="v1-4-1"><h1>Arcana 1.4.1 — Fair Blows</h1>
+<p>Released September 2026. <strong>Your launcher updates you when you reconnect.</strong></p>
+<h2>Bosses</h2>
+<ul>
+<li class="change"><span class="what"><strong>A BOSS COULDN'T HIT ITS TANK</strong></span><span class="old">A marked player's mechanic refused the boss's blows on everyone else, in
+  every phase, so a boss could chase whoever held its attention and never land a hit</span><span class="arrow">→</span><span class="new"><strong>A boss can always
+  strike the one it is fighting.</strong></span></li>
+<li class="change"><span class="what"><strong>COMING BACK AFTER DYING</strong></span><span class="old">A fighter who died or logged out was dropped from the fight, and could no longer
+  hurt the boss or be hurt by it</span><span class="arrow">→</span><span class="new"><strong>You keep your place in the fight.</strong></span></li>
+<li class="change"><span class="what"><strong>SPOILS FOR EVERYONE</strong></span><span class="old">A boss's trophy fell once on the ground for whoever grabbed it</span><span class="arrow">→</span><span class="new"><strong>Every fighter
+  gets their own, straight into their pack.</strong></span></li>
+</ul>
+<h2>Mages</h2>
+<ul>
+<li class="change"><span class="what"><strong>CROWD CONTROL ON PLAYERS</strong></span><span class="old">Frost and the Gravity Well held other players even with PvP off</span><span class="arrow">→</span><span class="new"><strong>They only
+  hold other players where PvP is on.</strong> Creatures are affected as before.</span></li>
+</ul>
+<h2>Connecting</h2>
+<ul>
+<li><strong>PLAYING FROM THE SERVER'S HOUSE</strong> The Play button now tries the home network first and uses it when the
+  server answers there, so players in the same house connect directly instead of through the internet.</li>
+</ul></article>
+<article id="v1-4"><h1>Arcana 1.4 — Hearth and Hardship</h1>
+<p>Released September 2026. <strong>Your launcher updates you when you reconnect.</strong></p>
+<p>You can now put down roots out in the wild. Bosses got their real strength back, and they have a patience
+bar. And the wild no longer heals you: bring supplies.</p>
+<h2>Homes</h2>
+<ul>
+<li><strong>A HOME OF YOUR OWN</strong> From level 10, buy a <strong>Cornerstone</strong> at Greave's stone yard (1,500 coin) and set it
+  down at least 600 blocks from any town's wall. The square of ground around it is your claim. Holding the
+  stone shows you where other people's claims are.</li>
+<li><strong>TAKING ROOT</strong> A new home takes root at the first dawn after a whole night.</li>
+<li><strong>WAKE AT HOME</strong> Pay 1,000 coin at Asteryn's city hall and a death or a Recall brings you home instead of to
+  your town. Changing it back costs the same.</li>
+<li><strong>HOUSEHOLD</strong> Add friends at the stone; each can then bind their own wake to your home.</li>
+<li><strong>SAFE FROM CREATURES</strong> Nothing explodes a claim and nothing hostile is born on its doorstep. Players are
+  on their honour.</li>
+<li><strong>ABANDON</strong> gives you the stone back; what you built stays.</li>
+</ul>
+<h2>Towns</h2>
+<ul>
+<li><strong>TOWNS CAN'T BE GRIEFED</strong> Lava, water, fire, TNT, pistons, dispensers, boats, armour stands, frames,
+  axes, hoes and bone meal no longer change a town. Doors, gates, levers, chests and townsfolk still work
+  as before.</li>
+</ul>
+<h2>Bosses</h2>
+<ul>
+<li class="change"><span class="what"><strong>FULL STRENGTH</strong></span><span class="old">Minecraft capped every creature's health, so bosses had a fraction of their intended
+  health and the same pool solo or in a party</span><span class="arrow">→</span><span class="new"><strong>Bosses now have their full health, scaled to your
+  party.</strong> A boss takes about 3–5 minutes alone and 1–2 with a party of four.</span></li>
+<li><strong>PATIENCE</strong> A thin amber bar under a boss's health. It drains only when the fight isn't fair: the boss
+  dragged out of its arena, nobody it can reach, or the boss stuck. When it empties, the boss goes home at
+  full health and can be fought again straight away. <strong>Kiting on open ground is fine</strong>, and one player
+  on a pillar can't reset a fight someone else is honestly tanking.</li>
+<li><strong>NO MORE WAIT</strong> The three-minute wait after a failed attempt is gone.</li>
+</ul>
+<h2>Healing and supplies</h2>
+<ul>
+<li><strong>NO HEALING IN THE WILD</strong> Health no longer comes back on its own out in the wild. Inside a town's walls or
+  your own claim you slowly mend out of combat. Food keeps you fed but no longer heals.</li>
+<li><strong>HEALING POTION</strong> Heals over time; one at a time. Sold at every general store, cheapest in Asteryn.</li>
+<li><strong>BANDAGE</strong> Stand still for a few seconds to apply it; a step or a blow spoils it. Fallow's tannery.</li>
+<li><strong>SALVE</strong> A slow heal you can walk with, out of combat. Crafted only.</li>
+<li><strong>MANA POTION</strong> Doubles a Mage's mana regeneration for a minute. Asteryn's alembic.</li>
+<li><strong>CRAFT YOUR OWN</strong> Every remedy can be made from plants that grow on the island.</li>
+</ul>
+<h2>Classes</h2>
+<ul>
+<li><strong>MAGE — STILLPOINT</strong> Standing your ground in a fight floods your mana and quickens your spells. Stay
+  planted behind someone who holds the enemy's attention.</li>
+<li><strong>ASSASSIN</strong> A kill now heals a share of your health, not all of it.</li>
+<li><strong>COMBAT</strong> Being hit now counts as being in combat for both sides, which fixes the Mage's ward refilling
+  mid-fight and the Assassin's combat speed never turning on.</li>
+</ul></article>
+<article id="v1-3-8"><h1>Arcana 1.3.8 — Fair Fights</h1>
+<p>Released September 2026. <strong>Your launcher updates you when you reconnect</strong> (the party board is drawn on your side).</p>
+<h2>Bosses</h2>
+<ul>
+<li class="change"><span class="what"><strong>BOSSES COULD NOT BE HURT</strong></span><span class="old">A boss whose area had been empty for a while, or that had reset once, lost
+  track of who was fighting it: every twenty seconds it decided everyone had left, healed to full, walked
+  home and turned immune for three minutes. Arrows bounced and blades did nothing</span><span class="arrow">→</span><span class="new"><strong>Fixed for every
+  boss.</strong> A boss fight now always knows who is in it, and a boss that has reset stays home and leaves you
+  alone until it is ready again.</span></li>
+</ul>
+<h2>The party board (Tab)</h2>
+<ul>
+<li class="change"><span class="what"><strong>KILLS AND DEATHS</strong></span><span class="old">reset to 0 / 0 every time you logged in</span><span class="arrow">→</span><span class="new"><strong>They are your whole character's record</strong>
+  now, so everything you have already killed shows straight away.</span></li>
+<li class="change"><span class="what"><strong>EVERY MONSTER COUNTS</strong></span><span class="old">Kills of much weaker creatures were never counted</span><span class="arrow">→</span><span class="new"><strong>They count</strong> (they still
+  pay no experience).</span></li>
+<li><strong>CONNECTION BARS ARE BACK</strong> Each row shows the player's ping bars, and the milliseconds where the board is
+  wide enough, so you can see who is lagging.</li>
+</ul>
+<h2>Quests</h2>
+<ul>
+<li class="change"><span class="what"><strong>SEARCH STEPS</strong></span><span class="old">A step that asked you to find something in a stretch of country pointed at the middle of
+  it, and said you had arrived when there was nothing there</span><span class="arrow">→</span><span class="new"><strong>The arrow points at the thing itself.</strong></span></li>
+</ul></article>
+<article id="v1-3-7"><h1>Arcana 1.3.7 — The Straight Road</h1>
+<p>Released September 2026. <strong>No client update is needed.</strong></p>
+<p>Quests were a walking simulator: back and forth across towns you already know to report every step. Every
+quest chain was measured leg by leg and rerouted. A full run from your class quests to the end of the second
+story chapter is now about <strong>37% shorter</strong>.</p>
+<h2>Quests</h2>
+<ul>
+<li class="change"><span class="what"><strong>STEPS FINISH WHERE YOU DO THEM, EVERYWHERE</strong></span><span class="old">Class quests and town admissions sent you back to the giver
+  after every step</span><span class="arrow">→</span><span class="new"><strong>A step out in the world finishes on the spot.</strong> You go back only to hand over goods or
+  to finish the chain.</span></li>
+<li class="change"><span class="what"><strong>ROUTES</strong></span><span class="old">Steps zig-zagged across the island</span><span class="arrow">→</span><span class="new"><strong>Each chain runs as a path.</strong> Long walks are kept only
+  where you're going somewhere new.</span></li>
+<li class="change"><span class="what"><strong>"ANY" TARGETS</strong></span><span class="old">Some steps pointed you at a far-away example</span><span class="arrow">→</span><span class="new"><strong>The arrow picks the nearest.</strong></span></li>
+<li><strong>SMALL STEPS</strong> Spending a skill point or setting a waypoint no longer needs a walk back to the herald.</li>
+<li><strong>QUEST LINES</strong> Lines written as if said to your face now read as word sent to you.</li>
+</ul>
+<h2>The story</h2>
+<ul>
+<li><strong>THE FIRST CHAPTER</strong> is shorter and more focused. If you were partway through it, you start the new version;
+  anything you'd already done counts straight away.</li>
+</ul></article>
+<article id="v1-3-6"><h1>Arcana 1.3.6 — Right Where You Are</h1>
+<p>Released September 2026. <strong>No client update is needed</strong>, but your launcher will bring you up to date.</p>
+<h2>Story quests</h2>
+<ul>
+<li class="change"><span class="what"><strong>STEPS FINISH WHERE YOU DO THEM</strong></span><span class="old">Every step sent you back to the quest giver</span><span class="arrow">→</span><span class="new"><strong>A step completes the
+  moment its work is done</strong>, tells you so, and the tracker moves straight on. You go to the giver to start a
+  chapter and to finish it.</span></li>
+<li class="change"><span class="what"><strong>ALREADY DONE</strong></span><span class="old">A step you'd done before it was given vanished without a word</span><span class="arrow">→</span><span class="new"><strong>It says so.</strong></span></li>
+<li class="change"><span class="what"><strong>THE GIVER</strong></span><span class="old">Stayed marked the whole way through</span><span class="arrow">→</span><span class="new"><strong>Marked only when there's something to start or hand in.</strong></span></li>
+<li class="change"><span class="what"><strong>STORYTELLERS</strong></span><span class="old">Holding your quest hid their tale</span><span class="arrow">→</span><span class="new"><strong>Quest first, the tale one button below.</strong></span></li>
+<li><strong>LATER CHAPTERS</strong> Parts of the story past the second chapter are closed for a rework. You'll be told
+  plainly when you reach the end of what's there. Nothing is broken.</li>
+</ul>
+<h2>Bosses</h2>
+<ul>
+<li class="change"><span class="what"><strong>A DEFEATED BOSS</strong></span><span class="old">Gave no sign of coming back</span><span class="arrow">→</span><span class="new"><strong>"Returns in N minutes"</strong> near its ground and in your tracker.</span></li>
+<li class="change"><span class="what"><strong>BOSS HELPERS</strong></span><span class="old">Could arrive far above the boss's own level</span><span class="arrow">→</span><span class="new"><strong>They match the boss.</strong> So do the creatures
+  around its arena.</span></li>
+</ul>
+<h2>Towns</h2>
+<ul>
+<li class="change"><span class="what"><strong>ROTATED BUILDINGS</strong></span><span class="old">Many were built turned from their plan, so their people, beds, chests and doorways didn't
+  line up</span><span class="arrow">→</span><span class="new"><strong>Everyone stands in the right room</strong>, the town's paths reach the real doors, and nothing anybody
+  built was touched.</span></li>
+<li class="change"><span class="what"><strong>SIGNS</strong></span><span class="old">Said town flavour that told you nothing</span><span class="arrow">→</span><span class="new"><strong>Every shop and building sign says what the place is
+  and what it's for.</strong></span></li>
+</ul></article>
+<article id="v1-3-5"><h1>Arcana 1.3.5 — The Road Goes On</h1>
+<p>Released September 2026. <strong>No client update is needed.</strong></p>
+<p>Every step of the storyline, from the first class quest to the very last, was walked on a copy of the live
+world by a stand-in character. Several later story quests could not be finished at all; now every step
+can be.</p>
+<h2>Fixes</h2>
+<ul>
+<li class="change"><span class="what"><strong>LATER STORY QUESTS</strong></span><span class="old">Some could not be picked up or handed in, and one chapter was skipped for most
+  players</span><span class="arrow">→</span><span class="new"><strong>Every quest can be taken, done and handed in, in order.</strong></span></li>
+<li class="change"><span class="what"><strong>QUESTS THAT SENT YOU NOWHERE</strong></span><span class="old">A few steps named a waystone that doesn't exist</span><span class="arrow">→</span><span class="new"><strong>They name one that does.</strong></span></li>
+<li class="change"><span class="what"><strong>BOSS STEPS</strong></span><span class="old">Showed a raw text key and pointed you back at the quest giver</span><span class="arrow">→</span><span class="new"><strong>The boss's name, and an
+  arrow to where it is.</strong></span></li>
+<li class="change"><span class="what"><strong>KILLED BOSSES</strong></span><span class="old">Never came back, so the first kill was the only one on the server</span><span class="arrow">→</span><span class="new"><strong>They return after
+  a while.</strong></span></li>
+<li class="change"><span class="what"><strong>QUEST TEXT</strong></span><span class="old">A few lines used people's old names, stated a different count than the tracker, or promised
+  waystone travel that no longer exists</span><span class="arrow">→</span><span class="new"><strong>The lines match the tracker.</strong></span></li>
+<li class="change"><span class="what"><strong>STORYTELLERS</strong></span><span class="old">Handing a quest to a storyteller reset where you were in her tale</span><span class="arrow">→</span><span class="new"><strong>Your place is kept.</strong></span></li>
+</ul></article>
+<article id="v1-3-4"><h1>Arcana 1.3.4 — Hand It In</h1>
+<p>Released September 2026. <strong>No client update is needed.</strong></p>
+<h2>Fixes</h2>
+<ul>
+<li class="change"><span class="what"><strong>LATER STORY HAND-INS</strong></span><span class="old">The giver said "That part is done." and offered only a shop and Leave</span><span class="arrow">→</span><span class="new"><strong>A hand-in button.</strong> No story quest after the admissions ever showed one: the button was only offered by
+  the givers of the openings and admissions. Every story giver offers it now.</span></li>
+<li class="change"><span class="what"><strong>TOWNSFOLK IN WALLS</strong></span><span class="old">Smith Bodil Tuyere worked inside Greave's granary wall, and about forty others in
+  the four towns stood in walls, over chairs that aren't there, or at the wrong end of their building</span><span class="arrow">→</span><span class="new"><strong>They stand where their building really is.</strong> Buildings the town planner turned had been built unturned,
+  so their people's places were a quarter turn off. Towns built from now on are built as planned, and the
+  people already standing are moved once, on this restart. No blocks are changed.</span></li>
+</ul></article>
+<article id="v1-3-3"><h1>Arcana 1.3.3 — Your Quest First</h1>
+<p>Released September 2026. Two fixes. <strong>No client update is needed</strong>; your launcher will still bring you up
+to date next time you start it.</p>
+<h2>Fixes</h2>
+<ul>
+<li class="change"><span class="what"><strong>A QUEST GIVER WHO KEEPS A SHOP</strong></span><span class="old">Clicking her always opened her shop, even with your story quest waiting
+  on her, so that step could never be handed in</span><span class="arrow">→</span><span class="new"><strong>Her click opens your quest.</strong> Her shop is one button
+  down (<em>Show me your wares.</em>). Everyone else still gets her shop straight away.</span></li>
+<li class="change"><span class="what"><strong>WITCHES</strong></span><span class="old">Took about a tenth of a spell's damage: vanilla's own 85% magic reduction and their new
+  30 magic resist were both applied</span><span class="arrow">→</span><span class="new"><strong>Only the magic resist.</strong> A 500 spell lands for about 385.
+  Vanilla potions of harming hit them in full too now.</span></li>
+</ul></article>
+<article id="v1-3-2"><h1>Arcana 1.3.2 — Walk Right In</h1>
+<p>Released September 2026. The new town gates opened for you and then wouldn't let you through: you were
+pushed back in the doorway every step. Fixed.</p>
+<p><strong>Updating.</strong> If you play through the Arcana Prism instance, just launch it: it updates itself before the game
+starts. Otherwise import the new <code>Arcana.zip</code> from the pack's latest release.</p>
+<h2>Fixes</h2>
+<ul>
+<li class="change"><span class="what"><strong>THE TOWN GATES' DOORS</strong></span><span class="old">Open, but you rubber-banded in the doorway</span><span class="arrow">→</span><span class="new"><strong>You walk straight through.</strong> Your
+  game saw an open door and the server saw a wall, so it kept putting you back. Now both see the door the
+  same way.</span></li>
+</ul></article>
+<article id="v1-3-1"><h1>Arcana 1.3.1 — Doors Open</h1>
+<p>Released September 2026, minutes after 1.3. The server could not be joined on 1.3: it hung while finding
+the towns' new cats, dogs and chickens the first time it started, and every connection was turned away
+with "Disconnected". Fixed. Everything in 1.3 is otherwise as announced.</p>
+<p><strong>Updating.</strong> If you play through the Arcana Prism instance, just launch it: it updates itself before the game
+starts. Otherwise import the new <code>Arcana.zip</code> from the pack's latest release.</p>
+<p><strong>Characters and the world carry over.</strong> Nothing is reset. The gates cut in 1.3 stand as they are.</p>
+<h2>Fixes</h2>
+<ul>
+<li class="change"><span class="what"><strong>JOINING THE SERVER</strong></span><span class="old">"Failed to connect: Disconnected" on 1.3</span><span class="arrow">→</span><span class="new"><strong>You can join.</strong> The animals' first
+  placement waited on land it had never asked the server to load, so the server never finished starting.</span></li>
+</ul></article>
+<article id="v1-3"><h1>Arcana 1.3 — Living Towns</h1>
+<p>Released September 2026. The four towns come alive: grand gates all along their walls, lit windows and a
+fire at the inn after dark, people working their trades, cats and dogs in the streets, a town crier with
+the news, daily bounties on the board, and weekly rites that are worth turning up to. You can recall
+home. And the endgame story finally shows up once the last gate admits you.</p>
+<p><strong>Updating.</strong> If you play through the Arcana Prism instance, just launch it: it updates itself before the game
+starts. Otherwise import the new <code>Arcana.zip</code> from the pack's latest release.</p>
+<p><strong>Characters and the world carry over.</strong> Nothing is reset, and nothing anybody built is touched: every new
+gate stands well clear of player builds.</p>
+<hr />
+<h2>Highlights</h2>
+<ul>
+<li><strong>Grand gates, everywhere.</strong> More than a hundred new 3×6 gates cut through the town walls, framed in each
+  town's own stone. The doors swing open as you walk up and shut behind you. They open only for players the
+  town lets in, and monsters never get through.</li>
+<li><strong>The endgame story appears.</strong> Finished every admission and the quest corner went blank? That was a bug.
+  Your next quest now shows up in the tracker.</li>
+<li><strong>Towns at night.</strong> Windows light up at dusk, a lamplighter makes her round, and the inn lights its fire
+  and fills with townsfolk for the evening.</li>
+<li><strong>Daily bounties</strong> on each town's board, paid in coin.</li>
+<li><strong>Recall.</strong> Press <strong>.</strong> and stand still for ten seconds to go home.</li>
+</ul>
+<hr />
+<h2>Recall</h2>
+<ul>
+<li><strong>RECALL HOME</strong> Press <strong>.</strong> (rebind it in Controls under Arcana) or type <code>/recall</code>. Stand still for ten
+  seconds and you arrive where you'd respawn: your town.</li>
+<li><strong>WHAT CANCELS IT</strong> Moving, taking a hit, attacking, casting or using an item. Press <strong>.</strong> again to stop
+  it yourself. Looking around and jumping on the spot are fine.</li>
+<li><strong>NO COOLDOWN</strong> The ten seconds are the only cost.</li>
+<li><strong>WHERE IT DOESN'T WORK</strong> On the frontier across the sea, in the practice grounds, in a ladder bout or a
+  duel, and when you're already home.</li>
+</ul>
+<h2>Gates</h2>
+<ul>
+<li class="change"><span class="what"><strong>NEW GATES</strong></span><span class="old">A few ways in and out of each town</span><span class="arrow">→</span><span class="new"><strong>Dozens</strong>: a gate wherever a road meets the wall,
+  and along every long stretch of wall. Greave gets 34, Nought 28, Fallow 24, Asteryn 22.</span></li>
+<li><strong>WHO THEY OPEN FOR</strong> Players the town admits. A town that hasn't admitted you keeps its doors shut to
+  you. Your mount and your tamed pets come through with you.</li>
+<li><strong>MONSTERS</strong> Never pass, open doors or shut.</li>
+</ul>
+<h2>The endgame story</h2>
+<ul>
+<li class="change"><span class="what"><strong>YOUR NEXT QUEST</strong></span><span class="old">Never appeared after the last admission</span><span class="arrow">→</span><span class="new"><strong>It does</strong>, in your quest tracker, with its
+  giver marked. A giver who also keeps a shop opens your quest when you right-click them while their step
+  is yours; the shop is one button down (<em>Show me your wares.</em>). Everybody else still gets the shop straight
+  away.</span></li>
+<li>Everyone's progress is their own, as with every other quest.</li>
+</ul>
+<h2>Evenings</h2>
+<ul>
+<li><strong>LIT WINDOWS</strong> Houses light up at dusk and go dark one by one as the night goes on. The inn and the
+  watch stay lit till dawn.</li>
+<li><strong>THE INN</strong> A fire in the middle of the room from sunset to dawn, and a crowd round it early in the
+  evening.</li>
+<li><strong>THE LAMPLIGHTER</strong> Walks the lamp posts at sunset and lights them.</li>
+<li><strong>ANIMALS</strong> Cats on the doorsteps, a dog with every wall guard, chickens in the yard.</li>
+</ul>
+<h2>People at work</h2>
+<ul>
+<li><strong>AT THEIR BENCHES</strong> Smiths hammer, sawyers saw, bakers knead, scribes turn pages, fishers cast, each with
+  their own tool and sound.</li>
+<li><strong>DELIVERIES</strong> Now and then a crafter carries what she made to her shop's counter.</li>
+</ul>
+<h2>The town notices you</h2>
+<ul>
+<li><strong>THE CRIER</strong> Each town's herald calls out the news three times a day: who was admitted, bosses killed,
+  weapons forged, milestones.</li>
+<li><strong>GREETINGS</strong> In a town that counts you a friend, people greet you by name.</li>
+<li><strong>DAILY BOUNTIES</strong> Right-click the town board for today's three jobs: a hunt, a gather and a survey.
+  Coin, never XP. Carry up to three; each one shows in your quest tracker with an arrow to where it
+  happens.</li>
+</ul>
+<h2>Rites</h2>
+<p>Each town's weekly rite now matters for a day, dusk to dusk:</p>
+<table>
+<thead>
+<tr>
+<th>Town</th>
+<th>Rite</th>
+<th>The day after</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Greave</td>
+<td>The Carving</td>
+<td>Repairs at Greave's counters cost half</td>
+</tr>
+<tr>
+<td>Asteryn</td>
+<td>The Reading</td>
+<td>A respec costs half</td>
+</tr>
+<tr>
+<td>Nought</td>
+<td>The Reckoning</td>
+<td>Nought's counters pay 30% more for what you sell</td>
+</tr>
+<tr>
+<td>Fallow</td>
+<td>The Marking</td>
+<td>40 coin for each road post you touch, up to 5</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>TAKE PART</strong> Stand in the ring during the rite for 25 coin, once per rite, if the town admits you.</li>
+</ul>
+<h2>Sound</h2>
+<ul>
+<li><strong>TOWNS YOU CAN HEAR</strong> Market chatter, the forge, the inn's murmur and its tune, bells at dawn and sunset,
+  each rite's own opening sound, gulls on Nought's docks, birdsong in Fallow.</li>
+</ul></article>
+<article id="v1-2-2"><h1>Arcana 1.2.2 — Kills Count</h1>
+<p>Released September 2026. A fix for players stuck on a quest: kills now always count.</p>
+<p><strong>Updating.</strong> If you play through the Arcana Prism instance, just launch it: it updates itself before the game
+starts. Otherwise import the new <code>Arcana.zip</code> from the pack's latest release.</p>
+<hr />
+<h2>Fixes</h2>
+<ul>
+<li class="change"><span class="what"><strong>QUEST KILLS</strong></span><span class="old">A creature eight or more levels below you paid no XP <strong>and did not count for your quest</strong></span><span class="arrow">→</span><span class="new"><strong>Every kill counts for your quest</strong>, however far below you it is. Only the XP and coin still fade, as
+  before.</span></li>
+<li class="change"><span class="what"><strong>GRAVITY WELL AND RUNE WARD</strong></span><span class="old">A creature they killed was nobody's kill: no XP, no coin, no quest count</span><span class="arrow">→</span><span class="new"><strong>Their kills are yours</strong>, like Arcane Bolt's.</span></li>
+</ul>
+<p>Kills made before this update are not counted retroactively. Finish the step with a few more.</p></article>
+<article id="v1-2-1"><h1>Arcana 1.2.1 — Every Seller a Shop</h1>
+<p>Released September 2026. The towns' markets are back: every townsperson who sells works at a real shop you
+can find on the map, every town has an armourer, and the shops are named for what they do. Also, hitting a
+practice dummy no longer turns out the town guard.</p>
+<p><strong>Updating.</strong> If you play through the Arcana Prism instance, just launch it: it updates itself before the game
+starts. Otherwise import the new <code>Arcana.zip</code> from the pack's latest release.</p>
+<p><strong>Characters and the world carry over.</strong> Nothing is reset. The sellers and armourers take their places in
+every town when the server restarts.</p>
+<hr />
+<h2>Highlights</h2>
+<ul>
+<li><strong>Every seller is a shop.</strong> Market sellers are back at the stalls, and every one of them works a real shop
+  with a shelf, a pin on the Chart and an icon for its trade. Sellers of one trade share one shop.</li>
+<li><strong>Every town has an armourer</strong>, in its armoury, who makes, reworks and repairs armour.</li>
+<li><strong>Names that say what the place is.</strong> "The Reforge", "The Sheath" and "The Fletchery" are now "The Forge",
+  "Forge &amp; Rogue's Kit" and "Forge &amp; Fletcher".</li>
+<li><strong>Practice dummies</strong> no longer raise the town alarm.</li>
+</ul>
+<hr />
+<h2>Shops</h2>
+<ul>
+<li class="change"><span class="what"><strong>MADE-TO-ORDER COUNTERS</strong></span><span class="old">Pay, wait, collect</span><span class="arrow">→</span><span class="new"><strong>Gone.</strong> Anyone who sells works at a shop and sells from its
+  shelf. <strong>An order you already paid for is refunded in full</strong> the next time you talk to that person. Guards
+  and residents no longer sell anything.</span></li>
+<li class="change"><span class="what"><strong>THE MARKETS</strong></span><span class="old">Empty stalls</span><span class="arrow">→</span><span class="new"><strong>Sellers two to a booth</strong>, each working one of the town's shops. One pin per
+  shop, on the market, with an icon for its trade.</span></li>
+<li><strong>NEW SHOPS</strong> (one seller of each good, as before):</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Town</th>
+<th>Shop</th>
+<th>Sells</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fallow</td>
+<td>Farm Stalls</td>
+<td>hay, eggs</td>
+</tr>
+<tr>
+<td>Fallow</td>
+<td>Timber Yard</td>
+<td>logs, planks, sticks</td>
+</tr>
+<tr>
+<td>Fallow</td>
+<td>Pottery &amp; Clay</td>
+<td>clay, mud, lily pads, bowls</td>
+</tr>
+<tr>
+<td>Fallow</td>
+<td>Tannery</td>
+<td>leather, white wool</td>
+</tr>
+<tr>
+<td>Fallow</td>
+<td>Ironmonger</td>
+<td>bucket, flint and steel, shears</td>
+</tr>
+<tr>
+<td>Greave</td>
+<td>Tools &amp; Hardware</td>
+<td>iron tools, bars, chain, rails, minecart, cauldron</td>
+</tr>
+<tr>
+<td>Greave</td>
+<td>Stone Yard</td>
+<td>deepslate, andesite, gravel, flint</td>
+</tr>
+<tr>
+<td>Greave</td>
+<td>Furnaces &amp; Anvils</td>
+<td>anvil, grindstone, stonecutter, furnaces, campfire, charcoal</td>
+</tr>
+<tr>
+<td>Asteryn</td>
+<td>Booksellers</td>
+<td>books, book and quill, ink, lectern, bookshelf, cartography table</td>
+</tr>
+<tr>
+<td>Asteryn</td>
+<td>Stonemasons</td>
+<td>cobblestone, stone, smooth stone</td>
+</tr>
+<tr>
+<td>Nought</td>
+<td>Lamps &amp; Candles</td>
+<td>candles, soul torches, soul lantern</td>
+</tr>
+<tr>
+<td>Nought</td>
+<td>Nets &amp; Casks</td>
+<td>fishing rod, barrel, boat</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li class="change"><span class="what"><strong>THE FRONTIER HARBOURMASTER</strong></span><span class="old">Counter said "closed"</span><span class="arrow">→</span><span class="new"><strong>Sells bread, torches, a stone axe and a bed.</strong></span></li>
+</ul>
+<h2>Armour</h2>
+<ul>
+<li class="change"><span class="what"><strong>EVERY TOWN'S ARMOURY</strong></span><span class="old">Nobody inside</span><span class="arrow">→</span><span class="new"><strong>An armourer</strong>: Rhiannon Pryse in Fallow, Ragna Hauberk in Greave,
+  Percival Rivetsby in Asteryn, Valeria Squama in Nought. They make, rework and repair armour; weapons go to
+  the forge.</span></li>
+<li class="change"><span class="what"><strong>ARMOUR PARTS</strong></span><span class="old">The Forge in Greave</span><span class="arrow">→</span><span class="new"><strong>Greave's armoury</strong>, at the same prices. Every part is still a
+  crafting-table recipe too.</span></li>
+</ul>
+<h2>Names</h2>
+<table>
+<thead>
+<tr>
+<th>Was</th>
+<th>Now</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The Reforge</td>
+<td>The Forge — Weaponsmith</td>
+</tr>
+<tr>
+<td>The Fletchery</td>
+<td>Forge &amp; Fletcher</td>
+</tr>
+<tr>
+<td>The Alembic</td>
+<td>Forge &amp; Apothecary</td>
+</tr>
+<tr>
+<td>The Sheath</td>
+<td>Forge &amp; Rogue's Kit</td>
+</tr>
+<tr>
+<td>The Hermit's Forge</td>
+<td>Hermit's Rare Parts</td>
+</tr>
+<tr>
+<td>Deepway Stores</td>
+<td>Mining Supplies</td>
+</tr>
+<tr>
+<td>Tidewrack</td>
+<td>Fishmonger &amp; Chandler</td>
+</tr>
+<tr>
+<td>The Glasswright</td>
+<td>Glass &amp; Paper</td>
+</tr>
+<tr>
+<td>Provisioner</td>
+<td>General Store</td>
+</tr>
+<tr>
+<td>The Cartomancer</td>
+<td>Surveyor's Office</td>
+</tr>
+<tr>
+<td>Forge Row, Forge Shed</td>
+<td>Smiths' Row, Smith's Shed</td>
+</tr>
+</tbody>
+</table>
+<p>Every quest step that named an old title now uses the new one.</p>
+<h2>Fixes</h2>
+<ul>
+<li><strong>MISSED AN UPDATE?</strong> The welcome screen now shows <strong>every update you haven't seen</strong>, newest first: if you
+  skipped 1.2, you'll read both 1.2.1 and 1.2 when you log in.</li>
+<li class="change"><span class="what"><strong>PRACTICE DUMMIES</strong></span><span class="old">Hitting one rang the town's alarm and turned out the garrison</span><span class="arrow">→</span><span class="new"><strong>It doesn't.</strong> A real
+  fight in the yard still does.</span></li>
+</ul></article>
+<article id="v1-2"><h1>Arcana 1.2 — The League Update</h1>
+<p>Released September 2026. Every number in Arcana now reads the way League of Legends reads it: health in the
+hundreds on a bar marked every 100, Attack Damage, Bow Damage and Ability Power, Armor and Magic Resist, and a
+character sheet that shows exactly where every point comes from. Greave's forge becomes an item shop, spells
+scale with AP, and dying tells you what killed you. It also carries the fixes and the weapon rework made since
+1.1.1.</p>
+<p><strong>Updating.</strong> If you play through the Arcana Prism instance, just launch it: it updates itself before the game
+starts. Otherwise import the new <code>Arcana.zip</code> from the pack's latest release.</p>
+<p><strong>Characters and the world carry over.</strong> Nothing is reset. The weapons and armour you carry are re-read with
+the new numbers when you log in; one left in a chest is re-read once it is in your pack.</p>
+<hr />
+<h2>Highlights</h2>
+<ul>
+<li><strong>League's numbers.</strong> Health, damage, healing and shields read at League's scale: a level-1 Warrior has 700
+  health. Your bar has a line every 100 and a heavy line every 1,000, a shield is white, and other players'
+  bars are blue.</li>
+<li><strong>Three damage stats.</strong> Attack Damage (melee), Bow Damage and Ability Power. A bow never runs on AP.</li>
+<li><strong>Armor and Magic Resist, League's rule.</strong> 100 halves that kind of damage. Every class has both, and they grow
+  with level. Spells are magic damage, and some creatures resist them.</li>
+<li><strong>A character sheet that shows its work.</strong> Hover any stat in the Grimoire for your base and every bonus by
+  name.</li>
+<li><strong>Spells scale with AP.</strong> The tooltip does the arithmetic for your character.</li>
+<li><strong>Greave's forge is an item shop.</strong> Tier 1 and 2 parts for coin, sell-back at 70 %, and eight named weapons
+  with passives of their own.</li>
+<li><strong>A death recap, a boss-fight damage summary, a Tab scoreboard</strong> and <strong>a practice dummy</strong> in town.</li>
+<li><strong>Weapon tiers climb about five times</strong> from tier 1 to tier 5.</li>
+</ul>
+<hr />
+<h2>Numbers, the League way</h2>
+<ul>
+<li class="change"><span class="what"><strong>THE SCALE</strong></span><span class="old">Hearts</span><span class="arrow">→</span><span class="new"><strong>League's scale.</strong> Every health, damage, healing and shield number you read is 25
+  times what it was, so nothing got stronger or weaker by it: a zombie that took a heart now takes 50 of your
+  700. Armor and Magic Resist are League's own numbers and are not scaled.</span></li>
+<li class="change"><span class="what"><strong>YOUR HEALTH BAR</strong></span><span class="old">Hearts</span><span class="arrow">→</span><span class="new"><strong>A bar with a thin line every 100 health and a heavy line every 1,000</strong>, like
+  League's. A shield (the Mage's ward, Rune Ward, a golden apple) is a white segment after your health.</span></li>
+<li class="change"><span class="what"><strong>OTHER PLAYERS</strong></span><span class="old"></span><span class="arrow">→</span><span class="new"><strong>A blue bar over their heads</strong>, like allies in League. Creatures' bars stay red and get the
+  same lines.</span></li>
+<li class="change"><span class="what"><strong>DAMAGE NUMBERS</strong></span><span class="old"></span><span class="arrow">→</span><span class="new"><strong>Coloured by kind</strong>: orange physical, purple magic, white true, teal for arrows. A
+  headshot is bigger, with a "!".</span></li>
+<li class="change"><span class="what"><strong>LOOK AT A TARGET</strong></span><span class="old"></span><span class="arrow">→</span><span class="new"><strong>Its level, health, Armor, Magic Resist and the kind of damage it deals</strong>, in the
+  target frame.</span></li>
+</ul>
+<h2>Your stats</h2>
+<ul>
+<li><strong>ATTACK DAMAGE</strong> is melee damage, and says so everywhere.</li>
+<li><strong>BOW DAMAGE</strong> is its own stat: a plain arrow's damage is its base, levels and your bow's limb add to it, and a
+  Blessing's percentage multiplies all of it. <strong>Ability Power no longer strengthens arrows.</strong></li>
+<li><strong>ABILITY POWER</strong> starts at 0 and never grows with level, as in League. Every point is bought: a focus gives
+  it, at twice what the stone used to add, so your spells deal what they did.</li>
+<li class="change"><span class="what"><strong>ARMOR AND MAGIC RESIST</strong></span><span class="old"></span><span class="arrow">→</span><span class="new"><strong>Damage × 100 ÷ (100 + resist)</strong>, League's rule, instead of vanilla's armour.
+  Every class has both at level 1 and gains them each level (the Warrior most Armor, the Mage most Magic
+  Resist). Vanilla armour still counts: full diamond is 120 Armor, 45 % less physical damage (vanilla made it
+  80 %).</span></li>
+<li class="change"><span class="what"><strong>PENETRATION</strong></span><span class="old"></span><span class="arrow">→</span><span class="new"><strong>Lethality and Magic Penetration</strong> on some tier 3–5 edges and focus stones. The Stiletto's
+  "ignores all armour", the Warhammer's Crush, the Wound's shred and Sunder are League penetration now.</span></li>
+<li class="change"><span class="what"><strong>ABILITY HASTE</strong></span><span class="old"></span><span class="arrow">→</span><span class="new"><strong>Cooldown × 100 ÷ (100 + haste)</strong>, on some tier 3–5 focus stones.</span></li>
+<li><strong>LEVELS</strong> Attack Damage and Bow Damage grow on League's back-loaded curve and land at level 20 exactly where
+  they did. A Mage's level growth is on her spells' base damage now.</li>
+<li><strong>THE CHARACTER SHEET</strong> The Grimoire lists Health, Attack Damage (melee), Bow Damage, Ability Power, Armor,
+  Magic Resist, Attack Speed, Ability Haste, penetration and Move Speed. A number raised by what you carry is
+  gold. <strong>Hover it</strong> for the base (class and level), then every bonus by name (your weapon, each armour piece,
+  each Blessing, your skill tree), and under Armor and Magic Resist how much damage you take.</li>
+</ul>
+<h2>Spells</h2>
+<ul>
+<li><strong>ARCANE BOLT</strong> 275/308/341/374/407 <strong>(+50 % AP)</strong> magic damage. <strong>GRAVITY WELL</strong> +40 % AP, <strong>RUNE WARD</strong>
+  +30 % AP. The rank raises the base; the ratio does not change with rank, as in League.</li>
+<li><strong>THE SPELL PAGE</strong> shows every rank with yours highlighted, then <em>"For you: base + AP = total"</em>.</li>
+</ul>
+<h2>Creatures</h2>
+<ul>
+<li><strong>ARCANE CREATURES</strong> resist spells (Aftershade, Rune Stalker, Wickwane and their kind, 20–30 Magic Resist), and
+  a few <strong>deal magic damage</strong>, so Magic Resist is worth buying.</li>
+<li><strong>BEASTS</strong> resist no magic. <strong>STONE CREATURES</strong> are armoured as before and resist a little magic.</li>
+<li><strong>LEVELS</strong> Every creature's Armor and Magic Resist grow with its level, at about half a player's pace: a
+  level-20 creature has about 19 more Armor and 11 more Magic Resist than a level-1 one.</li>
+</ul>
+<h2>Greave's forge, the item shop</h2>
+<ul>
+<li class="change"><span class="what"><strong>PARTS FOR COIN</strong></span><span class="old"></span><span class="arrow">→</span><span class="new"><strong>Greave's counter sells every tier 1 and tier 2 part</strong>, priced by what its stats are
+  worth. Crafting them still works. The hermit is still the only seller of tiers 3 and 4, and six of his prices
+  moved to match what their stats are worth.</span></li>
+<li class="change"><span class="what"><strong>SELL-BACK</strong></span><span class="old"></span><span class="arrow">→</span><span class="new"><strong>Sell a part, or a whole forged weapon or armour piece, back to Greave for 70 %</strong> of its
+  parts' worth.</span></li>
+<li><strong>COMBINE COST</strong> The forge fee is shown as League's combine cost, with what the parts are worth.</li>
+<li><strong>NAMED WEAPONS</strong> Build one of these exactly and it takes the name, in gold, and a passive:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Class</th>
+<th>Built from</th>
+<th>Passive</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kernsplitter</td>
+<td>Warrior, greatblade</td>
+<td>Kern Anvil, Wall Binding, Pan Tine</td>
+<td><strong>Opening Cut</strong>: +150 damage against targets above 70 % health</td>
+</tr>
+<tr>
+<td>Deepwall Maul</td>
+<td>Warrior, warhammer</td>
+<td>Deepwall core, Bosa grip, Tidewrack edge</td>
+<td><strong>Wallbreaker's Brace</strong>: a 200 shield on your first hit after 5 s out of a fight</td>
+</tr>
+<tr>
+<td>Nurra's Kiss</td>
+<td>Assassin, fang</td>
+<td>Nurra core, Aldford grip, Sheerwall edge</td>
+<td><strong>Quickening</strong>: +20 % attack speed for 3 s after a kill</td>
+</tr>
+<tr>
+<td>Foldwhisper</td>
+<td>Assassin, stiletto</td>
+<td>Foldheart, Fold Binding, Fold Tine</td>
+<td><strong>Third Whisper</strong>: every third hit deals 200 magic damage</td>
+</tr>
+<tr>
+<td>Galder Longreach</td>
+<td>Archer, longbow</td>
+<td>Hallowed core, Halstone grip, Galder limb</td>
+<td><strong>First Sight</strong>: +125 damage against targets above 90 % health</td>
+</tr>
+<tr>
+<td>Kerncaller</td>
+<td>Archer, warbow</td>
+<td>Kellstair core, Longacre grip, Kern Stave</td>
+<td><strong>Hunter's Due</strong>: a kill heals 6 % of your max health</td>
+</tr>
+<tr>
+<td>Salt Choir</td>
+<td>Mage, staff</td>
+<td>Winze core, Salt Binding, Salt Eye</td>
+<td><strong>Chorus</strong>: every third spell hit deals 150 magic damage</td>
+</tr>
+<tr>
+<td>Hollowgate Warden</td>
+<td>Mage, sceptre</td>
+<td>Redemark core, Porthold grip, Hollowgate stone</td>
+<td><strong>Gate Ward</strong>: a 200 shield on your first hit after 5 s out of a fight</td>
+</tr>
+</tbody>
+</table>
+<p>The forge tells you when your parts complete one, or are one part away from one. Your weapons master's book
+  has a new chapter listing them and what each stat is worth in coin.</p>
+<h2>Readouts</h2>
+<ul>
+<li class="change"><span class="what"><strong>DEATH RECAP</strong></span><span class="old"></span><span class="arrow">→</span><span class="new"><strong>The death screen shows what killed you</strong>: your last 10 seconds, by attacker and attack,
+  how much each did, the physical / magic / true split, the killing blow, and what your Armor and Magic Resist
+  stopped.</span></li>
+<li class="change"><span class="what"><strong>BOSS FIGHTS</strong></span><span class="old"></span><span class="arrow">→</span><span class="new"><strong>A damage summary when a boss dies or the party wipes</strong>: what you dealt, by attack and by
+  kind, and your party's totals. Backspace closes it.</span></li>
+<li class="change"><span class="what"><strong>TAB</strong></span><span class="old"></span><span class="arrow">→</span><span class="new"><strong>Your party's scoreboard</strong>: level, kills and deaths this session, coin, and everyone's six items.
+  Hold V to hover an item. Everyone else online is listed below.</span></li>
+<li class="change"><span class="what"><strong>PRACTICE DUMMY</strong></span><span class="old"></span><span class="arrow">→</span><span class="new"><strong>Two in every town's yard</strong>, like League's practice tool. Hit one and a panel shows
+  your damage per second (last 5 s and overall) and what it came from, by source and kind. Right-click sets its
+  Armor (0 / 50 / 100 / 200); sneak and right-click sets its Magic Resist. It never dies and never fights back.</span></li>
+</ul>
+<h2>Weapons (since 1.1.1)</h2>
+<ul>
+<li><strong>TIERS</strong> A full tier-5 weapon kills about <strong>five times</strong> as fast as a full tier-1 one of its type (it was 1.6–2.7
+  times). Tier 1 and 2 parts barely moved.</li>
+<li><strong>MAGE WEAPONS</strong> A core's damage on a wand, staff or sceptre goes into your spells, not your swing.</li>
+<li><strong>UPGRADES ADD</strong> Weapon parts and skill-tree nodes add flat damage; only Blessings multiply.</li>
+<li><strong>CHAIN AND REAVE</strong> grow with the tier of the part that carries them.</li>
+<li><strong>THE ARCHER</strong> A perfect-aim Archer may out-damage the Assassin.</li>
+</ul>
+<h2>Fixes (since 1.1.1)</h2>
+<ul>
+<li><strong>BLEEDS</strong> no longer make the target briefly immune to your next hit, and <strong>no longer shove</strong> it out of reach.</li>
+<li><strong>DYING</strong> no longer takes your class's stats away until you relog.</li>
+<li><strong>WAYSTONES</strong> are cleared of the trees that grew over them.</li>
+<li><strong>TOWN WALLS</strong> warn you before you walk into a town that will throw you out, and a first offence costs no
+  standing.</li>
+</ul>
+<hr />
+<h2>Behind the scenes</h2>
+<ul>
+<li>Every number is still tunable on the server, including every creature's Armor and Magic Resist
+  (<code>resists.json</code>) and every part's coin value.</li>
+</ul></article>
+<article id="v1-1-1"><h1>Arcana 1.1.1 — Twelve Ways to Fight</h1>
+<p>Released September 2026. The headline is <strong>weapons</strong>: every weapon type now plays differently, and the
+game tells you how before you choose. Around it, the Assassin loses the last of her stealth, the
+Assassin's bleed stops counting as a fresh hit, and the "work your name back" errand now points you at
+the gate instead of through it.</p>
+<p><strong>Updating.</strong> If you play through the Arcana Prism instance, just launch it: it updates itself before
+the game starts. Otherwise import the new <code>Arcana.zip</code> from the pack's latest release.</p>
+<p><strong>Characters and the world carry over.</strong> Nothing is reset. The forged weapons you carry rewrite their
+tooltips with the new lines when you log in; one left in a chest does so on a later login, once it is
+in your pack.</p>
+<hr />
+<h2>Highlights</h2>
+<ul>
+<li><strong>Every weapon type has a rule of its own.</strong> An Arming Sword rewards staying on one enemy, a
+  Greatblade cleaves crowds, a Warhammer lands one crushing blow, and so on for all twelve.</li>
+<li><strong>Which weapon to pick.</strong> Your class's weapons master now opens on a "which to pick" page, and you can
+  open it from anywhere: <strong>Weapons</strong> in the Grimoire, <strong>Compare</strong> at the forge.</li>
+<li><strong>The Assassin has no stealth left.</strong> No backstab, no crouch-in-the-dark, no faster crouch.</li>
+<li><strong>The Assassin's bleed is fixed.</strong> It was counting as a fresh hit every second, so it never faded and
+  kept getting stronger. It now bleeds as designed and fades 5 s after your last hit.</li>
+<li><strong>Working your name back points at the gate.</strong> The quest line sent you to the town's mayor, inside
+  the wall you were not allowed through.</li>
+<li><strong>The map remembers everything you explore</strong>, at full detail and at every zoom.</li>
+</ul>
+<hr />
+<h2>Weapons</h2>
+<p><strong>Every type has a signature.</strong> It is the first line on the weapon's tooltip, in gold, and the first
+line on the forge's hover and in the item book.</p>
+<p><strong>Warrior</strong>
+- <strong>ARMING SWORD — Tempo</strong> ⇒ Each hit on the same target within 2 s of the last is 8% harder than the one
+  before, up to 3 steps (+24%). Switch targets and it starts again.
+- <strong>GREATBLADE — Cleave</strong> ⇒ A full swing's sweep hits everything beside the target for <strong>40% of the
+  blow</strong>, not a 1-damage nick.
+- <strong>WARHAMMER — Crush</strong> ⇒ A full swing ignores 30% of the target's armour and throws it back hard.</p>
+<p><strong>Assassin</strong>
+- <strong>FANG — Lingering</strong> ⇒ Its Wounds take twice as long to fade: cut, step out, come back.
+- <strong>STILETTO — Pinpoint</strong> ⇒ Ignores all of the target's armour. For anything in plate.
+- <strong>RIPPER — Serrated</strong> ⇒ Its Wounds go 5 deep instead of 3.
+- <strong>SHURIKEN</strong> ⇒ Unchanged: it is already the only thing that is thrown and passes through.</p>
+<p><strong>Archer</strong>
+- <strong>SHORTBOW — Snap Shot</strong> ⇒ From half drawn, an arrow flies and hits as if fully drawn. Only a true full
+  draw still earns the full-draw bonus.
+- <strong>LONGBOW — Steady</strong> ⇒ Stand still for 1 s and your next arrow is 25% harder.
+- <strong>WARBOW — Pierce</strong> ⇒ An arrow passes through its first target into the next.</p>
+<p><strong>Mage</strong>
+- <strong>WAND — Quick Cast</strong> ⇒ Arcane Bolt comes back 25% sooner.
+- <strong>STAFF — Channel</strong> ⇒ Mana comes back 25% faster while the staff is in your hand.
+- <strong>SCEPTRE — Battle Mage</strong> ⇒ A melee hit gives back 3 mana, and a spell cast within 3 s of one hits
+  15% harder.</p>
+<p><strong>Choosing one</strong></p>
+<ul>
+<li class="change"><span class="what"><strong>WEAPONS MASTER'S FIRST PAGE</strong></span><span class="old">"The three shapes", raw stat changes</span><span class="arrow">→</span><span class="new"><strong>Which knife / bow / focus /
+  weapon</strong>: each type's rule in gold, then how it swings or draws with no parts in it</span></li>
+<li class="change"><span class="what"><strong>GRIMOIRE</strong></span><span class="old"></span><span class="arrow">→</span><span class="new"><strong>Weapons</strong> button: your class's comparison, from anywhere</span></li>
+<li class="change"><span class="what"><strong>FORGE</strong></span><span class="old"></span><span class="arrow">→</span><span class="new"><strong>Compare</strong> button beside the weapon types; closing the book brings you back to the bench</span></li>
+</ul>
+<p>The numbers are a first draft. Tell us what feels wrong.</p>
+<hr />
+<h2>Classes</h2>
+<p><strong>Assassin</strong></p>
+<ul>
+<li class="change"><span class="what"><strong>BACKSTAB</strong></span><span class="old">×1.75 from behind</span><span class="arrow">→</span><span class="new"><strong>Removed</strong>. Her skill tree stopped paying for position in 1.1; the
+  class itself now does too.</span></li>
+<li class="change"><span class="what"><strong>SHADOW</strong></span><span class="old">Crouch in the dark and distant creatures lose you</span><span class="arrow">→</span><span class="new"><strong>Removed</strong></span></li>
+<li class="change"><span class="what"><strong>CROUCH SPEED</strong></span><span class="old">Near walking pace</span><span class="arrow">→</span><span class="new"><strong>Normal</strong>, like everyone else</span></li>
+<li class="change"><span class="what"><strong>HER DAMAGE FROM THE FRONT</strong></span><span class="old"></span><span class="arrow">→</span><span class="new"><strong>Unchanged.</strong> All three knives were already the fastest killers in
+  the game head-on; the backstab was never part of that sum.</span></li>
+<li class="change"><span class="what"><strong>THE WEAPONS MASTER</strong></span><span class="old">"Behind. That is the whole lesson"</span><span class="arrow">→</span><span class="new">Teaches <em>fast and first</em> instead</span></li>
+</ul>
+<p><strong>The bleed (Wound)</strong></p>
+<ul>
+<li class="change"><span class="what"><strong>A BLEED TICK</strong></span><span class="old">Counted as a fresh melee hit</span><span class="arrow">→</span><span class="new"><strong>Counts as the bleed</strong>, 2 damage a stack each second</span></li>
+<li class="change"><span class="what"><strong>HOW LONG IT LASTS</strong></span><span class="old">Until the creature died, from one hit</span><span class="arrow">→</span><span class="new"><strong>Fades 5 s after your last real hit</strong></span></li>
+<li class="change"><span class="what"><strong>HOW DEEP IT GOES</strong></span><span class="old">Climbed to full stacks on its own</span><span class="arrow">→</span><span class="new"><strong>Only your hits add stacks</strong></span></li>
+<li class="change"><span class="what"><strong>WHAT MULTIPLIED IT</strong></span><span class="old">Your edge, the Wound bonus, the full-stack bonus and every damage passive</span><span class="arrow">→</span><span class="new"><strong>Nothing</strong></span></li>
+<li class="change"><span class="what"><strong>WHAT IT TRIGGERED</strong></span><span class="old">Weapon traits, an envenomed blade and "on melee hit" passives, every second</span><span class="arrow">→</span><span class="new"><strong>Nothing</strong></span></li>
+</ul>
+<p>This is a large cut to what one hit was worth: roughly 13–19 damage a second for ever, down to what the
+Wound was always meant to do. Kills by bleed still count as yours.</p>
+<hr />
+<h2>Towns</h2>
+<ul>
+<li class="change"><span class="what"><strong>WORKING YOUR NAME BACK</strong></span><span class="old">The quest corner said "take it back to" the town's <strong>mayor</strong>, inside the
+  wall</span><span class="arrow">→</span><span class="new"><strong>The wayfinder at the gate</strong>, who is the one who takes it. Following the old line into a town
+  that was hostile to you made it worse with every step.</span></li>
+</ul>
+<hr />
+<h2>The Map</h2>
+<ul>
+<li class="change"><span class="what"><strong>WHAT YOU'VE EXPLORED</strong></span><span class="old"></span><span class="arrow">→</span><span class="new"><strong>Remembered at full detail</strong>, saved on your computer, and just as sharp
+  zoomed out. The 1.1 notes described this; it arrives in 1.1.1. Ground you explored before fills in the
+  next time you pass near it.</span></li>
+</ul>
+<hr />
+<h2>Behind the scenes</h2>
+<ul>
+<li><strong>Balance without an update.</strong> Every combat, creature, class, economy and world number can now be
+  retuned on the server. Your tooltips, panels and quest text read the server's numbers, so they stay
+  right after a change.</li>
+<li><strong>The "What's new" link</strong> opens these notes on the web.</li>
+</ul></article>
+<article id="v1-1"><h1>Arcana 1.1 — Towns You Can Navigate</h1>
+<p>Released September 2026. <strong>Everything since 1.0.2</strong>: the 1.0.3, 1.0.4 and 1.0.5 patches, plus the
+largest set of changes the island has had since launch.</p>
+<p>The headline is <strong>the map</strong>: redrawn, full screen, and able to tell you where to buy anything you have
+found. Around it: a combat pass that makes fast weapons work and nights shorter, an endgame questline
+with a boss at the end of each chapter, four worn containers, a new Assassin path, and a long list of
+things that were quietly broken and now are not.</p>
+<p><strong>Download the 1.1 pack.</strong> Almost everything below changed on your side of the connection too.</p>
+<p><strong>Characters and the world carry over.</strong> Nothing is reset. Assassins get their skill points back
+automatically on their next login.</p>
+<hr />
+<h2>Highlights</h2>
+<ul>
+<li><strong>A new map.</strong> Full screen, smooth zoom, JourneyMap-style shaded terrain, and every shop drawn as
+  what it sells.</li>
+<li><strong>Find any vendor.</strong> Search the map by a shop's name, its trade, or any item it sells or buys.
+  Double-click a result to set your waypoint there.</li>
+<li><strong>Shops say what they are.</strong> <em>The Alembic — Apothecary</em>, <em>Tidewrack — Chandler</em>.</li>
+<li><strong>The endgame is a story.</strong> It runs from level 11 to 20, with a boss at the end of each chapter.</li>
+<li><strong>Fast weapons finally land every swing.</strong> Up to half their damage was being thrown away.</li>
+<li><strong>Shorter, thinner nights.</strong> Monsters have two thirds of their old health, and no more than nine
+  gather around you.</li>
+<li><strong>Four worn containers</strong>: Backpack, quiver, smith's roll and trophy bag, none of them taking pack space.</li>
+<li><strong>A new Assassin path</strong> built on risk, not sneaking.</li>
+<li><strong>All three town quests at once</strong>, side by side in the corner.</li>
+<li><strong>Every weapon explains itself</strong>: at the forge, on its tooltip and in the item book.</li>
+<li><strong>A way back from Hostile.</strong> A town's wayfinder lets you work your name back with deliveries.</li>
+<li><strong>Town armies are far harder</strong> — twice as tough, back in full by the next dawn.</li>
+</ul>
+<hr />
+<h2>The Map</h2>
+<p><strong>Redrawn</strong></p>
+<ul>
+<li class="change"><span class="what"><strong>LAYOUT</strong></span><span class="old">A window with bars top and bottom</span><span class="arrow">→</span><span class="new"><strong>The whole screen, with floating controls</strong></span></li>
+<li class="change"><span class="what"><strong>ZOOM</strong></span><span class="old">Six fixed steps</span><span class="arrow">→</span><span class="new"><strong>Smooth</strong>, anchored on your cursor, trackpad-friendly</span></li>
+<li class="change"><span class="what"><strong>TERRAIN</strong></span><span class="old">Vanilla's flat map colours with a checkerboard dither</span><span class="arrow">→</span><span class="new"><strong>Shaded relief</strong>, lit from the
+  north-west, in the colours of each biome's own grass, leaves and water</span></li>
+<li class="change"><span class="what"><strong>SEA, RIVERS AND LAKES</strong></span><span class="old">One flat blue</span><span class="arrow">→</span><span class="new"><strong>Light at the shore, deep offshore</strong>, with a coastline</span></li>
+<li class="change"><span class="what"><strong>LAYER TOGGLES</strong></span><span class="old">"Grid: off" buttons</span><span class="arrow">→</span><span class="new"><strong>Grid, Regions, Quest beam, Path beam, Coordinates</strong>, each
+  with a gold dot when on</span></li>
+<li class="change"><span class="what"><strong>WHAT YOU'VE EXPLORED</strong></span><span class="old">Sharp only near you, forgotten when you quit</span><span class="arrow">→</span><span class="new"><strong>Remembered at full
+  detail</strong>, saved on your computer, and just as sharp zoomed out as the screen can show</span></li>
+</ul>
+<p>Everywhere you explore is drawn from the real world at one block per pixel, with full hillshading:
+roads, walls, roofs and tree canopies stand out. The map now keeps it, so the whole island you have
+walked stays that sharp at every zoom. Ground you explored before 1.1 fills in the next time you pass
+near it. Land you have not explored is drawn from the island's survey, with the new sea and softer
+colours, under the fog as before.</p>
+<p><strong>Finding vendors</strong></p>
+<ul>
+<li class="change"><span class="what"><strong>SHOP PINS</strong></span><span class="old">One generic mark for all twelve</span><span class="arrow">→</span><span class="new"><strong>Each shop drawn as what it sells</strong> — a bow for
+  the Fletchery, an anvil for the Reforge, a brewing stand for the Alembic</span></li>
+<li class="change"><span class="what"><strong>SEARCH</strong></span><span class="old">Names only</span><span class="arrow">→</span><span class="new"><strong>Names, trades, and every item a shop sells or buys, and every service it
+  offers</strong> (try "arrow", "repair", "backpack")</span></li>
+<li class="change"><span class="what"><strong>TOWNSFOLK WHO MAKE THINGS TO ORDER</strong></span><span class="old">Not on the map</span><span class="arrow">→</span><span class="new"><strong>Found by searching</strong> for what they make</span></li>
+<li class="change"><span class="what"><strong>DOUBLE-CLICK A RESULT</strong></span><span class="old">Nothing</span><span class="arrow">→</span><span class="new"><strong>Sets your waypoint there</strong></span></li>
+<li class="change"><span class="what"><strong>CLICK A RESULT</strong></span><span class="old">Centred the map, and you had to guess where</span><span class="arrow">→</span><span class="new"><strong>Centres it and rings the spot</strong></span></li>
+<li class="change"><span class="what"><strong>PRICES</strong></span><span class="old">Not shown</span><span class="arrow">→</span><span class="new"><strong>Each result quotes your price and today's stock</strong> — <em>sells Arrow, 10 c</em> or
+  <em>sold out today</em></span></li>
+<li class="change"><span class="what"><strong>HOVER A TOWN</strong></span><span class="old">Its name</span><span class="arrow">→</span><span class="new"><strong>Its name, and where you stand with it</strong> — <em>You stand Cold here — they
+  let you in at Friendly</em></span></li>
+</ul>
+<p>Only what you have found is listed. A shop is found once you have been near it. A townsperson who
+makes things to order is found once you have found the building they work in. The search matches the
+start of words, so "arrow" finds arrows and not a man called Harrow.</p>
+<p><strong>Shop names</strong></p>
+<p>Every shop keeps its name and gains its trade, everywhere it is named:</p>
+<ul>
+<li><strong>Asteryn</strong>: The Alembic — Apothecary · The Glasswright — Glazier · The Cartomancer — Surveyor ·
+  Provisioner — Grocer</li>
+<li><strong>Fallow</strong>: The Fletchery — Fletcher · Reed and Orchard — Grocer · Provisioner — Grocer</li>
+<li><strong>Greave</strong>: The Reforge — Smithy · Deepway Stores — Outfitter</li>
+<li><strong>Nought</strong>: The Sheath — Fence · Tidewrack — Chandler · The Ledger — Moneylender</li>
+<li><strong>In the wild</strong>: The Hermit's Forge — Partsmith</li>
+</ul>
+<hr />
+<h2>Combat</h2>
+<p><strong>Every swing lands</strong></p>
+<p>Minecraft makes a creature immune for half a second after it is hit, so no weapon could land more than
+two full hits a second. The faster the weapon, the more it lost: the Wand threw away 51–55% of its
+damage, the Shuriken 43–48%, the Fang 38–44%, the Stiletto 32–36%.</p>
+<ul>
+<li class="change"><span class="what"><strong>YOUR HITS ON A CREATURE</strong></span><span class="old">Waited on the immunity</span><span class="arrow">→</span><span class="new"><strong>Land every time</strong></span></li>
+</ul>
+<p>Player against player keeps the immunity, and so do fire, lava, drowning and falls. Your bleed ticks
+count as your hits.</p>
+<p><strong>Monsters</strong></p>
+<ul>
+<li class="change"><span class="what"><strong>MONSTER HEALTH</strong></span><span class="old">66 at level 1</span><span class="arrow">→</span><span class="new"><strong>44</strong></span></li>
+<li class="change"><span class="what"><strong>EARLY-GAME DAMAGE PROTECTION</strong></span><span class="old">Faded out so fast that level 8 died quicker than level 1</span><span class="arrow">→</span><span class="new"><strong>Softer, so survival improves with every level</strong></span></li>
+</ul>
+<p><strong>Weapons</strong></p>
+<ul>
+<li class="change"><span class="what"><strong>DURABILITY LOST PER SWING</strong></span><span class="old">0</span><span class="arrow">→</span><span class="new"><strong>1</strong> (forged weapons never break; at zero they work weaker until
+  repaired)</span></li>
+<li class="change"><span class="what"><strong>WARRIOR SWEEP</strong></span><span class="old">Never happened</span><span class="arrow">→</span><span class="new"><strong>Every full swing, twice as wide, shoving bystanders</strong></span></li>
+<li class="change"><span class="what"><strong>FORGED SHURIKEN DAMAGE</strong></span><span class="old">6 at every tier</span><span class="arrow">→</span><span class="new"><strong>5.7 at tier 1 up to 14.0 at tier 5</strong></span></li>
+<li class="change"><span class="what"><strong>TIER 2 SHORTBOW</strong></span><span class="old">Less durable than tier 1</span><span class="arrow">→</span><span class="new"><strong>Fixed</strong></span></li>
+<li class="change"><span class="what"><strong>A LOOSE PART'S DAMAGE AND SPEED</strong></span><span class="old">"melee only"</span><span class="arrow">→</span><span class="new"><strong>"draw speed" and "arrow speed" on a bow</strong></span></li>
+</ul>
+<p><strong>Headshots</strong></p>
+<ul>
+<li class="change"><span class="what"><strong>ORDINARY MONSTERS</strong></span><span class="old">No head</span><span class="arrow">→</span><span class="new"><strong>A head</strong>: zombies, husks, drowned, skeletons, strays, bogged,
+  wither skeletons, zombie villagers, illagers, witches, piglins, the warden, <strong>endermen</strong>, spiders,
+  cave spiders, hoglins, zoglins and ravagers</span></li>
+<li class="change"><span class="what"><strong>BABY ZOMBIES</strong></span><span class="old">Most shots to the head counted as body shots</span><span class="arrow">→</span><span class="new"><strong>Their whole head counts</strong></span></li>
+<li class="change"><span class="what"><strong>SWIMMING DROWNED</strong></span><span class="old">Head looked for on top</span><span class="arrow">→</span><span class="new"><strong>In front, where it is</strong></span></li>
+</ul>
+<p>Slimes, magma cubes, shulkers, ghasts and guardians have no head to hit.</p>
+<p><strong>Duels</strong></p>
+<ul>
+<li class="change"><span class="what"><strong>AN AGREED DUEL WITH PVP OFF</strong></span><span class="old">Took the stake, and nobody could land a hit</span><span class="arrow">→</span><span class="new"><strong>The two duellists can
+  hurt each other</strong>; everyone else stays protected</span></li>
+</ul>
+<p><strong>Player versus player</strong></p>
+<ul>
+<li class="change"><span class="what"><strong>PVP</strong></span><span class="old">On</span><span class="arrow">→</span><span class="new"><strong>Off</strong>, including shuriken, the Arcane Bolt and every ability, which had ignored the
+  setting entirely</span></li>
+</ul>
+<hr />
+<h2>Classes</h2>
+<p><strong>Assassin — a new path, no sneaking in it</strong></p>
+<p>Most of the old path only paid out while sneaking or from behind. The new one: you hit hardest
+untouched or nearly dead, and pay for it in armour.</p>
+<ul>
+<li><strong>Unmarked</strong> (1) — +25% damage while nothing has hit you this fight</li>
+<li><strong>Thin Guard</strong> (1) — +15% damage dealt, +15% damage taken</li>
+<li><strong>Running Red</strong> (2) — up to +40% damage, the more health you have lost</li>
+<li><strong>Close Call</strong> (4) — a hit taking you below half gives Haste II for 6 seconds</li>
+<li><strong>Quick Feet</strong> (4) — <em>kept</em>: a kill gives Speed II</li>
+<li><strong>First Blood</strong> (5) — +30% into anything at full health</li>
+<li><strong>The Last Word</strong> (6) — a kill while below half health heals 15%</li>
+<li>
+<p><strong>Open Throat</strong> (7) — +35% into anything below 30% health</p>
+</li>
+<li>
+<p><strong>POINTS ON THE OLD PATH</strong> Stuck ⇒ <strong>Returned on your next login</strong></p>
+</li>
+</ul>
+<p><strong>Archer</strong></p>
+<ul>
+<li class="change"><span class="what"><strong>ARROWS IN A WORN QUIVER</strong></span><span class="old">Not used, and the bow would not draw</span><span class="arrow">→</span><span class="new"><strong>Used, after those in your pack</strong></span></li>
+</ul>
+<p><strong>Mage</strong></p>
+<ul>
+<li class="change"><span class="what"><strong>THE FOCUS TOOLTIP</strong></span><span class="old">Said right-click casts and sneak + right-click opens the Grimoire (neither was
+  true)</span><span class="arrow">→</span><span class="new"><strong>Names your real keys</strong>: R casts, G opens the Grimoire, as you have them bound</span></li>
+</ul>
+<hr />
+<h2>The Storyline</h2>
+<p><strong>The endgame is a questline</strong></p>
+<p>The endgame story continues past level 11, with a boss at the end of each chapter. It carries about 70%
+of the experience from level 8 to 20. The rest is the country, on purpose.</p>
+<p><strong>Bosses</strong></p>
+<ul>
+<li class="change"><span class="what"><strong>BOSS HEALTH</strong></span><span class="old">About a third of what a fight needed</span><span class="arrow">→</span><span class="new"><strong>Retuned</strong>: Hallowhorn 3600, She Who Salts
+  the Ford 4000, Sheerwall Warden 4400, What Walks on Kern 4800, the Thing in the Fold 5200, the Pan's
+  Own 5600. A fight runs one to two and a half minutes.</span></li>
+<li class="change"><span class="what"><strong>STORYLINE FIGHTS</strong></span><span class="old">Balanced for one class</span><span class="arrow">→</span><span class="new"><strong>In range for all four</strong></span></li>
+<li class="change"><span class="what"><strong>THE ENDGAME IN THE QUEST CORNER</strong></span><span class="old">Never shown</span><span class="arrow">→</span><span class="new"><strong>The current chapter, once all three towns let
+  you in</strong>, with its giver marked in the storyline's green</span></li>
+<li class="change"><span class="what"><strong>BOSS STEPS</strong></span><span class="old">Showed a raw text key</span><span class="arrow">→</span><span class="new"><strong>"Defeat" and the boss's name</strong></span></li>
+<li class="change"><span class="what"><strong>A BOSS YOU HELPED KILL</strong></span><span class="old">Counted for your story only if you did 10% of the damage</span><span class="arrow">→</span><span class="new"><strong>Counts for
+  everyone who fought it</strong>; the spoils still want 10%</span></li>
+<li class="change"><span class="what"><strong>A BOSS KILL</strong></span><span class="old">Wiped your dungeon record, arena ranks and any "kill six of these" step in progress</span><span class="arrow">→</span><span class="new"><strong>Fixed</strong>. Records it already wiped cannot be recovered.</span></li>
+</ul>
+<p><strong>The three town quests</strong></p>
+<ul>
+<li class="change"><span class="what"><strong>ADMISSION QUESTS IN THE CORNER</strong></span><span class="old">One, whichever town was nearest</span><span class="arrow">→</span><span class="new"><strong>All three at once</strong>, in a
+  fixed order, started ones first</span></li>
+<li class="change"><span class="what"><strong>A FINISHED STEP</strong></span><span class="old">Reworded itself</span><span class="arrow">→</span><span class="new"><strong>Greyed out with ✔</strong></span></li>
+<li class="change"><span class="what"><strong>WALKING PAST ANOTHER TOWN</strong></span><span class="old">Swapped your quest</span><span class="arrow">→</span><span class="new"><strong>Nothing changes</strong></span></li>
+</ul>
+<p><strong>Quest text that tells you everything</strong></p>
+<ul>
+<li class="change"><span class="what"><strong>HAND-INS</strong></span><span class="old">Named someone inside the walls, which sent strangers inside</span><span class="arrow">→</span><span class="new"><strong>The person at the
+  gate</strong>: every admission hand-in is to the person at the gate, and the text now says so. One of them
+  named the wrong person entirely.</span></li>
+<li class="change"><span class="what"><strong>TWO-PART STEPS</strong></span><span class="old">Named only the first part</span><span class="arrow">→</span><span class="new"><strong>Both</strong></span></li>
+<li class="change"><span class="what"><strong>A STEP YOUR STANDING BLOCKS</strong></span><span class="old">Silent</span><span class="arrow">→</span><span class="new"><em>"Fallow will not deal with you — you stand Hostile, and
+  they want Neutral"</em></span></li>
+<li class="change"><span class="what"><strong>THE ARROW</strong></span><span class="old">Pointed at work you had already done</span><span class="arrow">→</span><span class="new"><strong>Points at what is left</strong></span></li>
+<li class="change"><span class="what"><strong>A TOWNSPERSON'S STORY</strong></span><span class="old">Listening advanced your story quest</span><span class="arrow">→</span><span class="new"><strong>Separate</strong></span></li>
+<li class="change"><span class="what"><strong>GREAVE'S GATE-CLERK</strong></span><span class="old">132 blocks from where the quest said</span><span class="arrow">→</span><span class="new"><strong>At the gate</strong></span></li>
+<li class="change"><span class="what"><strong>AN OPENING STEP</strong></span><span class="old">Pointed at a place still hidden on your map</span><span class="arrow">→</span><span class="new"><strong>The place is shown for that
+  step</strong>, and the quest arrow points at it</span></li>
+<li class="change"><span class="what"><strong>HEADING, BEARING, "MAKE FOR"</strong></span><span class="old">Four words for one thing</span><span class="arrow">→</span><span class="new"><strong>"Waypoint"</strong>, everywhere</span></li>
+</ul>
+<hr />
+<h2>Towns and Trespassing</h2>
+<ul>
+<li class="change"><span class="what"><strong>ARRIVING AT A TOWN THAT HAS NOT LET YOU IN</strong></span><span class="old">"You are a stranger at this gate"</span><span class="arrow">→</span><span class="new"><strong>"You are a
+  stranger — stay outside until let in"</strong></span></li>
+<li class="change"><span class="what"><strong>STEPPING OVER A TOWN'S BORDER</strong></span><span class="old">Judged within about a second</span><span class="arrow">→</span><span class="new"><strong>Five seconds' grace</strong>, as intended</span></li>
+<li class="change"><span class="what"><strong>BEING THROWN OUT, THEN COMING BACK</strong></span><span class="old">Your record was wiped the moment you left</span><span class="arrow">→</span><span class="new"><strong>Remembered for
+  15 minutes</strong>: come back inside in that time and the guards kill you instead of carrying you out</span></li>
+</ul>
+<p>The five-second grace existed and one of the two watchers ignored it, so a stranger who stepped inside
+turned the town Cold before they could step back.</p>
+<hr />
+<p><strong>The way back from Hostile</strong></p>
+<ul>
+<li class="change"><span class="what"><strong>A TOWN THAT COUNTS YOU HOSTILE</strong></span><span class="old">Its story was closed for good</span><span class="arrow">→</span><span class="new"><strong>Its wayfinder at the gate takes
+  three deliveries per step back: Hostile → Cold → Neutral</strong>. Each town asks for its own goods — Fallow
+  grain, logs and hay; Greave stone and coal; Asteryn paper, feathers and wool; Nought clay, string and
+  kelp — and the quest corner tracks it.</span></li>
+<li class="change"><span class="what"><strong>THE ARRIVAL BANNER</strong></span><span class="old"></span><span class="arrow">→</span><span class="new"><strong>Says where you stand</strong>: <em>Cold · You are a stranger — stay outside until let
+  in</em></span></li>
+</ul>
+<p><strong>Town armies</strong></p>
+<ul>
+<li class="change"><span class="what"><strong>A SOLDIER</strong></span><span class="old"></span><span class="arrow">→</span><span class="new"><strong>Twice the health, half again the damage</strong> — about four ordinary monsters at level 20</span></li>
+<li class="change"><span class="what"><strong>THE ARMY AFTER A FIGHT</strong></span><span class="old">One soldier back a day, and the dead standing guard never came back</span><span class="arrow">→</span><span class="new"><strong>The whole army is back by the next dawn</strong></span></li>
+<li class="change"><span class="what"><strong>KILLING A CAPTAIN</strong></span><span class="old">Stopped her barracks sending more</span><span class="arrow">→</span><span class="new"><strong>The nearest soldier takes her place</strong></span></li>
+</ul>
+<h2>Storage</h2>
+<p>Four containers you wear, each in its own slot beside your armour. None takes a pack slot, nothing
+nests, and everything in them survives death.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Where</th>
+<th>Price</th>
+<th>Holds</th>
+<th>Level</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Backpack</strong></td>
+<td>Fallow, Reed and Orchard</td>
+<td>140</td>
+<td>anything, 9 slots</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Wide Backpack</strong></td>
+<td>Fallow, Reed and Orchard</td>
+<td>900</td>
+<td>anything, 18 slots</td>
+<td>6</td>
+</tr>
+<tr>
+<td><strong>Quiver</strong></td>
+<td>Fallow, the Fletchery</td>
+<td>220</td>
+<td>arrows and shuriken</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Smith's roll</strong></td>
+<td>Greave, the Reforge</td>
+<td>480</td>
+<td>forge components</td>
+<td>4</td>
+</tr>
+<tr>
+<td><strong>Trophy bag</strong></td>
+<td>Nought, the Sheath</td>
+<td>400</td>
+<td>trophies</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li class="change"><span class="what"><strong>KEY</strong></span><span class="old">None</span><span class="arrow">→</span><span class="new"><strong>B opens your worn storage, with a tab for each container you wear</strong> (the quiver,
+  roll and bag could only be opened by a command nobody was told about)</span></li>
+<li class="change"><span class="what"><strong>THE WIDE BACKPACK</strong></span><span class="old">Opened your old one when you used it</span><span class="arrow">→</span><span class="new"><strong>Swaps them and moves everything
+  across</strong>; it is called <em>Wide Backpack</em>, and every container's tooltip says how many pockets it has</span></li>
+<li class="change"><span class="what"><strong>THE FORGE</strong></span><span class="old">Only saw your pack</span><span class="arrow">→</span><span class="new"><strong>Also takes parts from your Smith's Roll and materials from your
+  Backpack</strong></span></li>
+<li class="change"><span class="what"><strong>SHURIKEN IN A QUIVER</strong></span><span class="old">Never thrown</span><span class="arrow">→</span><span class="new"><strong>Refill your hand when it runs out</strong>, like arrows</span></li>
+<li class="change"><span class="what"><strong>A SERVER RESTART</strong></span><span class="old">Could empty a Backpack and quiver</span><span class="arrow">→</span><span class="new"><strong>Fixed</strong>, and the one player it happened to
+  has everything back</span></li>
+</ul>
+<hr />
+<h2>The Night</h2>
+<ul>
+<li class="change"><span class="what"><strong>MONSTERS AROUND YOU</strong></span><span class="old">No limit</span><span class="arrow">→</span><span class="new"><strong>The night stops adding at 9 within 64 blocks</strong> (nothing is
+  removed; spawners, patrols and this mod's own creatures are unaffected)</span></li>
+<li class="change"><span class="what"><strong>PHANTOMS</strong></span><span class="old">On</span><span class="arrow">→</span><span class="new"><strong>Gone for good</strong></span></li>
+<li class="change"><span class="what"><strong>SIMULATION DISTANCE</strong></span><span class="old">10</span><span class="arrow">→</span><span class="new"><strong>8</strong>, Minecraft's default</span></li>
+</ul>
+<hr />
+<h2>Weapons and the Forge</h2>
+<p><strong>Every weapon says what it does</strong></p>
+<ul>
+<li><strong>AT THE FORGE</strong> Hover a weapon type to see what it is before you make it; hover a slot to see what
+  it adds</li>
+<li><strong>ON THE WEAPON</strong> Its tooltip says what no number shows</li>
+<li><strong>IN THE ITEM BOOK</strong> Each weapon type's card has the whole guide</li>
+<li>
+<p><strong>COMPONENT TOOLTIPS</strong> Every stat, used or not ⇒ <strong>Only the stats your weapon uses</strong></p>
+</li>
+<li>
+<p><strong>FORGING A SHURIKEN</strong> Made one star ⇒ <strong>Makes 16</strong></p>
+</li>
+<li class="change"><span class="what"><strong>REWORK AND THE ALTAR'S RELEASE</strong></span><span class="old">One click, no warning</span><span class="arrow">→</span><span class="new"><strong>Ask first</strong>, and say that what comes out
+  is gone</span></li>
+<li class="change"><span class="what"><strong>GREAVE'S AND NOUGHT'S HEALING POTION</strong></span><span class="old">Was a bottle of water</span><span class="arrow">→</span><span class="new"><strong>Heals</strong></span></li>
+</ul>
+<p>The Arcane Bolt locks on within <strong>15°</strong> of your aim and <strong>14 blocks</strong>, the same on every Mage weapon.
+Bows do not lock on. Bare, the Shortbow draws in 0.77 s, the Longbow in 0.95 s at 1.10× arrow speed,
+the Warbow in 1.00 s at 1.34×. The Shuriken flies 12 blocks through everything in its path.</p>
+<hr />
+<h2>The Item Book (JEI)</h2>
+<ul>
+<li class="change"><span class="what"><strong>EVERYTHING THIS MOD ADDS TO IT</strong></span><span class="old">Nothing — it had never once run</span><span class="arrow">→</span><span class="new"><strong>72 components, 17 patterns,
+  18 attunements, 12 shops</strong>, with <em>where to buy it</em> for every item</span></li>
+<li class="change"><span class="what"><strong>CARD TEXT</strong></span><span class="old">Unreadable on its own panel</span><span class="arrow">→</span><span class="new"><strong>Readable</strong></span></li>
+</ul>
+<hr />
+<h2>Economy</h2>
+<ul>
+<li class="change"><span class="what"><strong>TROPHY LOTS</strong></span><span class="old">Paid about a fifth of the kills that filled them</span><span class="arrow">→</span><span class="new"><strong>1.35× the kills</strong></span></li>
+<li class="change"><span class="what"><strong>BOARD TOTAL</strong></span><span class="old">692</span><span class="arrow">→</span><span class="new"><strong>1056</strong></span></li>
+<li class="change"><span class="what"><strong>COIN PER KILL</strong></span><span class="old">5</span><span class="arrow">→</span><span class="new"><strong>4</strong></span></li>
+</ul>
+<p>Hunting a named part is worth the walk now. Blessing fees were re-derived so the same play buys a rung.</p>
+<hr />
+<h2>The World</h2>
+<ul>
+<li class="change"><span class="what"><strong>LANDMARKS STANDING</strong></span><span class="old">22 of 49</span><span class="arrow">→</span><span class="new"><strong>49 of 49</strong> — twenty-seven places the world was meant to have,
+  placed into the running world</span></li>
+<li class="change"><span class="what"><strong>A NEW WORLD'S LANDMARK ON BAD GROUND</strong></span><span class="old">Never placed</span><span class="arrow">→</span><span class="new"><strong>Placed on the nearest ground that takes it</strong></span></li>
+<li class="change"><span class="what"><strong>WILDLIFE</strong></span><span class="old">Only ever filled up</span><span class="arrow">→</span><span class="new"><strong>Herds return to their intended size</strong>, never within 32 blocks
+  of you or in front of you</span></li>
+<li class="change"><span class="what"><strong>YOUR SKIN</strong></span><span class="old">Your character name's</span><span class="arrow">→</span><span class="new"><strong>Your account's</strong></span></li>
+</ul>
+<hr />
+<h2>Fixes</h2>
+<ul>
+<li>Joining the server could hang on <em>Loading terrain</em> for ever.</li>
+<li>The Training Grounds door is refused by the server, not only hidden on the client.</li>
+<li>A forged shuriken ignored the forge (see Weapons).</li>
+<li>A quiver would not feed a bow (see Archer).</li>
+<li><code>/arcana report</code> no longer tells players to run a gamemaster command; <code>/arcana dungeon</code> speaks
+  plainly; <code>/arcana waypoint list</code> no longer names waystones you have not found.</li>
+<li>Two dozen lines that showed as raw text keys now read as English.</li>
+<li><strong>Small windows.</strong> On a 1280×720 or 1024×768 monitor at the default GUI scale, the forge, the trade
+  table, the shop, the Grimoire, the teacher's book and the map's buttons ran off the edge of the
+  screen. Every screen now fits every size; where a page is longer than the window, it scrolls.</li>
+<li>A <strong>"What's new"</strong> screen shows once after this update, with a link to these notes.</li>
+</ul>
+<hr />
+<h2>New Commands</h2>
+<ul>
+<li><code>/arcana forge guide &lt;weapon&gt;</code> — any weapon type's guide in chat. Anyone can use it.</li>
+<li><em>(Gamemasters)</em> <code>/arcana chart goods &lt;text&gt;</code> — what the map's search finds; <code>/arcana town people
+  &lt;town&gt; [role]</code> — who a town says is standing in it; <code>/arcana landmark list | forget</code>.</li>
+</ul>
+<hr />
+<h2>Known Issues</h2>
+<ul>
+<li><strong>Ground you explored before 1.1</strong> is drawn from the island's survey until you pass near it again;
+  from then on the map remembers it at full detail.</li>
+<li><strong>Four cairns stand in the Barrow Fells</strong> where there should be one.</li>
+<li><strong>The Training Grounds are still withdrawn.</strong></li>
+<li><strong>Weapons forged before 1.0.5</strong> show their new tooltip lines after their next wear step or a rework.</li>
+</ul></article>
+<article id="v1-0-5"><h1>Arcana Patch 1.0.5</h1>
+<p>Released 23 September 2026. <strong>Covers 1.0.4 as well</strong>, which went out on the night of the 22nd without
+notes of its own.</p>
+<p>This one is mostly the night and the fight: fewer monsters that die faster, fast weapons that finally
+land every swing, a new Assassin path with no sneaking in it, and the weapon guide a player asked for.
+It also fixes the one bug that cost somebody gear — a server restart that could throw away what was in a
+Backpack — and puts back what it took.</p>
+<p><strong>Download the 1.0.5 pack.</strong> The quest corner and the weapon guide both changed on your side of the
+connection, so an older pack will not show them.</p>
+<p><strong>Existing worlds and characters carry over.</strong> Assassins get their skill points back automatically the
+first time they log in.</p>
+<hr />
+<h2>Patch Highlights</h2>
+<ul>
+<li><strong>Fast weapons were losing up to half their damage.</strong> The Wand, Shuriken, Fang and Stiletto now land
+  every swing.</li>
+<li><strong>The night is thinner and quicker.</strong> Monsters have two thirds of their old health, and no more than
+  nine gather around you before the night stops adding to them. Phantoms are gone.</li>
+<li><strong>A new Assassin skill path.</strong> Nothing in it asks you to sneak or stand behind anything.</li>
+<li><strong>The three town admission quests show together</strong> in the corner, and stop swapping as you walk.</li>
+<li><strong>Every weapon now says what it does</strong> — at the forge, on its tooltip, and in the item book.</li>
+<li><strong>A restart could empty a Backpack.</strong> Fixed, and the one player it happened to has his gear back.</li>
+</ul>
+<hr />
+<h2>Combat</h2>
+<p><strong>Every swing lands</strong></p>
+<p>Minecraft makes a creature immune for half a second after it is hit, so no weapon could land more than
+two full hits a second however fast it swung. The faster the weapon, the more it lost:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Swings a second</th>
+<th>Damage that was being thrown away</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wand</td>
+<td>4.1–4.4</td>
+<td><strong>51–55%</strong></td>
+</tr>
+<tr>
+<td>Shuriken</td>
+<td>3.5–3.8</td>
+<td>43–48%</td>
+</tr>
+<tr>
+<td>Fang</td>
+<td>3.2–3.6</td>
+<td>38–44%</td>
+</tr>
+<tr>
+<td>Stiletto</td>
+<td>2.9–3.1</td>
+<td>32–36%</td>
+</tr>
+<tr>
+<td>Arming Sword, tier 5</td>
+<td>2.5</td>
+<td>21%</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li class="change"><span class="what"><strong>YOUR HITS ON A CREATURE</strong></span><span class="old">Waited on the immunity</span><span class="arrow">→</span><span class="new"><strong>Land every time</strong></span></li>
+</ul>
+<p>Player against player still has the immunity, and so do fire, lava, drowning and fall damage — those tick
+every tick and would otherwise shred anything standing in them. Your bleed ticks count as your hits, so
+the swing that opened a Wound no longer swallows its first tick.</p>
+<p><strong>Monsters</strong></p>
+<ul>
+<li class="change"><span class="what"><strong>MONSTER HEALTH</strong></span><span class="old">66 at level 1</span><span class="arrow">→</span><span class="new"><strong>44</strong></span></li>
+</ul>
+<p><strong>Weapons wear out</strong></p>
+<p>Forged weapons had durability, wear bands and a repair service in every town — and never lost a point
+in a fight, because nothing ever took one. Now every swing costs one. They still never break: at the
+bottom of their durability they keep working at reduced strength until repaired.</p>
+<ul>
+<li class="change"><span class="what"><strong>DURABILITY LOST PER SWING</strong></span><span class="old">0</span><span class="arrow">→</span><span class="new"><strong>1</strong></span></li>
+</ul>
+<p><strong>The Warrior's sweep, which had never happened</strong></p>
+<p>The wider sweep added for the Warrior on the 22nd widened a sweep that Minecraft never started, because
+it only sweeps with an item it recognises as a sword and no forged blade is one. A full, grounded swing
+with any Warrior weapon now sweeps, twice as wide as anyone else's. It is Minecraft's own sweep: it
+shoves everything beside your target and nicks each for 1 — crowd control, not a second blow.</p>
+<ul>
+<li class="change"><span class="what"><strong>WARRIOR SWEEP</strong></span><span class="old">Never</span><span class="arrow">→</span><span class="new"><strong>Every full swing, 2× as wide, 1 damage and a shove to bystanders</strong></span></li>
+</ul>
+<p><strong>Player versus player</strong></p>
+<ul>
+<li class="change"><span class="what"><strong>PVP</strong></span><span class="old">On</span><span class="arrow">→</span><span class="new"><strong>Off</strong></span></li>
+</ul>
+<p>The server's settings file already said off. Minecraft now keeps that switch somewhere else, and it was
+on. Separately, the mod's own attacks — the shuriken, the Arcane Bolt, every ability — had never checked
+it at all, so even with it off a thrown shuriken could hurt another player that a sword could not touch.
+Both are closed. You can still hurt yourself.</p>
+<p><strong>Headshots on ordinary monsters</strong></p>
+<p>A headshot only worked on this mod's own creatures. It now works on every vanilla monster with a head
+you can aim at:</p>
+<ul>
+<li><strong>UPRIGHT</strong> zombies, husks, drowned, skeletons, strays, bogged, wither skeletons, zombie villagers,
+  pillagers, vindicators, evokers, illusioners, witches, piglins, piglin brutes, zombified piglins and
+  the warden — the same head as a player's.</li>
+<li><strong>LOW AND FORWARD</strong> spiders and cave spiders.</li>
+<li><strong>FORWARD AND HIGH</strong> hoglins, zoglins and ravagers.</li>
+</ul>
+<p>Slimes, magma cubes, shulkers, ghasts and guardians have no head to hit, and still have none.</p>
+<hr />
+<h2>Assassin</h2>
+<p><strong>A new skill path, and nothing in it is stealth</strong></p>
+<p>Five of the old eight nodes only paid out while sneaking and two more only from behind — which the
+game's own questline made nearly impossible to use. The new path is built on one idea: you hit hardest
+untouched or nearly dead, and you pay for it in armour.</p>
+<table>
+<thead>
+<tr>
+<th>Node</th>
+<th>Level</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Unmarked</strong></td>
+<td>1</td>
+<td>+25% damage while nothing has hit you this fight</td>
+</tr>
+<tr>
+<td><strong>Thin Guard</strong></td>
+<td>1</td>
+<td>+15% damage dealt, and +15% damage taken</td>
+</tr>
+<tr>
+<td><strong>Running Red</strong></td>
+<td>2</td>
+<td>Up to +40% damage, the more health you have lost</td>
+</tr>
+<tr>
+<td><strong>Close Call</strong></td>
+<td>4</td>
+<td>A hit that takes you below half gives Haste II for 6 seconds</td>
+</tr>
+<tr>
+<td><strong>Quick Feet</strong></td>
+<td>4</td>
+<td><em>(kept)</em> A kill gives Speed II</td>
+</tr>
+<tr>
+<td><strong>First Blood</strong></td>
+<td>5</td>
+<td>+30% damage into anything still at full health</td>
+</tr>
+<tr>
+<td><strong>The Last Word</strong></td>
+<td>6</td>
+<td>A kill while below half health heals 15%</td>
+</tr>
+<tr>
+<td><strong>Open Throat</strong></td>
+<td>7</td>
+<td>+35% damage into anything below 30% health</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li class="change"><span class="what"><strong>SKILL POINTS SPENT ON THE OLD PATH</strong></span><span class="old">Stuck</span><span class="arrow">→</span><span class="new"><strong>Returned automatically on your next login</strong></span></li>
+</ul>
+<hr />
+<h2>The Night</h2>
+<p><strong>How many monsters one night puts around you</strong></p>
+<ul>
+<li class="change"><span class="what"><strong>HOSTILE MONSTERS WITHIN 64 BLOCKS</strong></span><span class="old">No limit</span><span class="arrow">→</span><span class="new"><strong>The night stops adding at 9</strong></span></li>
+</ul>
+<p>Nothing is removed — a monster already there stays — the night just stops spawning new ones near you
+while nine are around. Spawner rooms, patrols and structures are not affected, and this mod's own
+creatures always spawn: they are the rare ones worth meeting.</p>
+<ul>
+<li class="change"><span class="what"><strong>PHANTOMS</strong></span><span class="old">On</span><span class="arrow">→</span><span class="new"><strong>Gone for good</strong></span></li>
+<li class="change"><span class="what"><strong>SERVER SIMULATION DISTANCE</strong></span><span class="old">10</span><span class="arrow">→</span><span class="new"><strong>8</strong>, Minecraft's default. The higher setting was allowing half
+  again as many monsters per player.</span></li>
+</ul>
+<hr />
+<h2>Quests</h2>
+<p><strong>The three town quests, side by side</strong></p>
+<p>The corner used to show whichever town's admission quest was nearest, so walking past one town on your
+way to another swapped your quest under you, and dying — which always wakes you in your own town —
+swapped it back.</p>
+<ul>
+<li class="change"><span class="what"><strong>ADMISSION QUESTS IN THE CORNER</strong></span><span class="old">One, nearest</span><span class="arrow">→</span><span class="new"><strong>All three at once</strong>, in a fixed order, the ones
+  you have started first</span></li>
+<li class="change"><span class="what"><strong>A FINISHED STEP</strong></span><span class="old">Changed its wording</span><span class="arrow">→</span><span class="new"><strong>Greyed out with ✔</strong></span></li>
+</ul>
+<p>Your own town's opening questline still shows on its own until it is done — it is a single story, and
+the three towns only open to you after it.</p>
+<p><strong>Quest lines that tell you everything</strong></p>
+<ul>
+<li>A step with two parts now names both. It used to name only the first, so players did it and waited
+  for a quest that was waiting for them.</li>
+<li>A step you cannot hand in because of your standing with that town now says so first: <em>"Fallow will not
+  deal with you — you stand Hostile, and they want Neutral"</em>.</li>
+<li>The arrow no longer points at work you have already done. A player who had already found what a
+  step asked for was being sent to a second one, 5,318 blocks away.</li>
+</ul>
+<hr />
+<h2>Weapons and the Forge</h2>
+<p><strong>What each kind of weapon does</strong></p>
+<p>A player asked for this in a sentence: <em>"Can you make it so it clearly tells you what each type of the
+class weapon does? As in if there is any firing range difference or locking degrees."</em></p>
+<ul>
+<li><strong>AT THE FORGE</strong> Hover a weapon type's button to see what it is before you make it. Hover a slot's
+  name to see what that slot adds.</li>
+<li><strong>ON THE WEAPON</strong> Its tooltip says what it does that no number shows.</li>
+<li><strong>IN THE ITEM BOOK</strong> Each weapon type's card carries the whole guide and scrolls.</li>
+</ul>
+<p>The answers to his two questions, since they are now written down:</p>
+<ul>
+<li><strong>Locking on.</strong> The Mage's Arcane Bolt locks on to a creature within <strong>15°</strong> of your aim and <strong>14
+  blocks</strong> of the bolt — <strong>the same on Wand, Staff and Sceptre</strong>. Bows do not lock on at all.</li>
+<li><strong>Range.</strong> A bow's reach is how fast its arrows leave it. Bare, before any parts: the Shortbow draws
+  fully in 0.77 s and shoots at plain-bow speed, the Longbow draws in 0.95 s at 1.10×, and the Warbow
+  draws in 1.00 s at 1.34×. The Shuriken flies 12 blocks, through everything in its path.</li>
+</ul>
+<p><strong>What slots and traits are</strong></p>
+<ul>
+<li>A weapon has three slots. <strong>Core</strong> and <strong>Grip</strong> fit any weapon; the third is the weapon's own —
+  <strong>Edge</strong> for a blade, <strong>Limb</strong> for a bow, <strong>Focus</strong> for a Mage's weapon.</li>
+<li>On a bow, the core's damage is <strong>draw speed</strong>, the grip's speed is <strong>arrow speed</strong>, and the limb adds
+  <strong>arrow damage</strong>. On a Mage's weapon the focus adds <strong>spell damage</strong>.</li>
+<li>
+<p><strong>Traits come from parts.</strong> Each part carries one at most — a small spark marks the ones that do. A
+  weapon holds three at most, and the same trait twice counts once.</p>
+</li>
+<li>
+<p><strong>A LOOSE PART'S DAMAGE AND SPEED</strong> "melee only" ⇒ <strong>"melee; draw speed on a bow"</strong> and <strong>"melee;
+  arrow speed on a bow"</strong>. It had been wrong since bows started reading those two numbers, and told
+  Archers their best core did nothing.</p>
+</li>
+</ul>
+<hr />
+<h2>Fixes</h2>
+<p><strong>A server restart could empty a Backpack</strong></p>
+<p>When the server restarted, it could read a player's save before it had learned what worn storage was,
+decide the Backpack and quiver were rubbish, and write the save back without them. It happened once, to
+one player: a Backpack of coal and a quiver of 576 arrows. <strong>Both are back.</strong></p>
+<p>The same mistake was waiting in three other places — commissions, debts and surveys — and none of them
+had been hit yet. All four are fixed, and the server now refuses to start if a fifth appears.</p>
+<hr />
+<h2>Server</h2>
+<p><strong>New commands</strong></p>
+<ul>
+<li><code>/arcana forge guide &lt;weapon&gt;</code> — any weapon type's guide, in chat. Anyone can use it.</li>
+<li><code>/arcana town people &lt;town&gt; [role]</code> — <em>(gamemaster)</em> who a town says is standing in it, and whether
+  they are.</li>
+</ul>
+<hr />
+<h2>Known Issues</h2>
+<ul>
+<li><strong>There is no way back from Hostile yet.</strong> A player who has made a town hostile — usually by being
+  caught inside its walls — cannot finish that town's admission quest. Paying the gate captain's fine
+  calls the soldiers off but does not repair your standing. The fix is chosen and not yet built: the
+  gate captain will give three errands per step back up, from Hostile to Cold to Neutral.</li>
+<li><strong>A weapon forged before this patch</strong> shows its new tooltip lines after its next wear step or a
+  rework. The forge and the item book are up to date straight away.</li>
+<li><strong>The Training Grounds are still withdrawn.</strong></li>
+</ul></article>
+<article id="v1-0-3"><h1>Arcana Patch 1.0.3</h1>
+<p>Released 22 September 2026.</p>
+<p>The big one is <strong>worn storage</strong>: four containers you wear like armour, none of which cost you a square
+of your pack. Beyond that this patch is repair — twenty-seven landmarks that the world was supposed to
+contain and never did, an item encyclopedia that had never once run, every boss re-tuned after the tool
+that priced them turned out to be blind, and a trophy board that paid a fifth of what killing for it
+was worth.</p>
+<p><strong>Existing worlds and characters carry over.</strong> No save data is reset. The landmarks were added to the
+world that is already running — no character, building, chest or quest was touched.</p>
+<hr />
+<h2>Patch Highlights</h2>
+<ul>
+<li><strong>Four worn containers.</strong> A Backpack, a quiver, a smith's roll and a trophy bag, each in its own
+  inventory slot, none of them taking pack space. <strong>B</strong> opens the Backpack.</li>
+<li><strong>The item encyclopedia (JEI) had never run at all.</strong> Every recipe, component, pattern and <em>where to
+  buy it</em> card in this mod was dead. All of it works now.</li>
+<li><strong>Every boss had about a third of the health it needed.</strong> The bench that priced them could not see
+  the damage half of the game.</li>
+<li><strong>A trophy paid about a fifth of what the kills to fill it were worth.</strong> Reported by a player, and
+  understated.</li>
+<li><strong>Twenty-seven landmarks were missing from the world.</strong> 1.0.2's notes said three.</li>
+<li>Arrows in a worn <strong>quiver</strong> are used by your bow. They were not, and the bow would not even draw.</li>
+</ul>
+<hr />
+<h2>Storage</h2>
+<p><strong>Four things you wear, and none of them costs you a slot</strong></p>
+<p>Each has its own square in the inventory screen, beside the armour. Left-click takes one off, exactly
+like a helmet. Nothing gates anything: you can own the quiver without the Backpack.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Where</th>
+<th>Price</th>
+<th>Holds</th>
+<th>Level</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Backpack</strong></td>
+<td>Fallow, the Reed and Orchard</td>
+<td>140</td>
+<td>anything, 9 slots</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Wide Backpack</strong></td>
+<td>Fallow, the Reed and Orchard</td>
+<td>900</td>
+<td>anything, 18 slots</td>
+<td>6</td>
+</tr>
+<tr>
+<td><strong>Quiver</strong></td>
+<td>Fallow, the Fletchery</td>
+<td>220</td>
+<td>arrows and shuriken</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Smith's roll</strong></td>
+<td>Greave, the Reforge</td>
+<td>480</td>
+<td>forge components</td>
+<td>4</td>
+</tr>
+<tr>
+<td><strong>Trophy bag</strong></td>
+<td>Nought, the Sheath</td>
+<td>400</td>
+<td>trophies</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li class="change"><span class="what"><strong>KEYBIND</strong></span><span class="old">None</span><span class="arrow">→</span><span class="new"><strong>B opens your Backpack</strong></span></li>
+<li class="change"><span class="what"><strong>COMMANDS</strong></span><span class="old">None</span><span class="arrow">→</span><span class="new"><code>/worn backpack</code>, <code>/worn quiver</code>, <code>/worn smiths_roll</code>, <code>/worn trophy_bag</code></span></li>
+</ul>
+<p>The Backpack is the cheapest counter in the game's own line, and deliberately has no level gate. The
+wide Backpack is a separate item rather than an upgrade to the one you wear, so the old one is yours to
+sell on.</p>
+<p><strong>Eighteen slots is the ceiling and it is deliberate.</strong> Past two rows the specialised containers stop
+mattering and the pressure the whole system exists to ease simply dissolves.</p>
+<p><strong>Nothing nests</strong> — no container goes inside any container, including the Backpack, which otherwise
+holds anything. <strong>Everything in them survives death</strong>, like the rest of your inventory.</p>
+<hr />
+<h2>The Item Encyclopedia</h2>
+<p><strong>Just Enough Items</strong> — the tab that tells you what a thing is, what it is made of and where to buy it.</p>
+<ul>
+<li class="change"><span class="what"><strong>EVERYTHING THIS MOD ADDS TO IT</strong></span><span class="old">Nothing</span><span class="arrow">→</span><span class="new"><strong>72 components, 17 patterns, 18 attunements, 12 shops</strong></span></li>
+</ul>
+<p>The whole integration had never once run. Nine files and four recipe categories, none of them ever
+invoked: a player asking where to find scrivener's ink could not find the components at all, and the
+answer was neither the fog nor his character — the plugin was never loaded. One line of configuration.</p>
+<p>What hid it was a log line from a <em>different</em> mechanism printing "jei is loaded" on every launch. The
+log said the feature was alive while the feature had never run.</p>
+<p><strong>Card colours</strong> — the shop's own name on a <em>Where to buy</em> card was drawn in gold on a light grey
+panel, which measures 1.12:1 against it. That is not low contrast, it is none.</p>
+<ul>
+<li class="change"><span class="what"><strong>TEXT ON A CARD</strong></span><span class="old">Minecraft's HUD colours, five of them unreadable</span><span class="arrow">→</span><span class="new"><strong>a palette that clears 4.5:1</strong></span></li>
+</ul>
+<hr />
+<h2>Bosses</h2>
+<p><strong>Every boss had roughly a third of the health it needed</strong>, because the tool that priced them could not
+see any class's damage pipeline — the Assassin read at 10.45 to 18.31 damage a second when she actually
+brings 53 to 85.</p>
+<table>
+<thead>
+<tr>
+<th>Boss</th>
+<th>Level</th>
+<th>Health</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hallowhorn</td>
+<td>8</td>
+<td>1100 ⇒ <strong>3600</strong></td>
+</tr>
+<tr>
+<td>She Who Salts the Ford</td>
+<td>11</td>
+<td>1500 ⇒ <strong>4000</strong></td>
+</tr>
+<tr>
+<td>Sheerwall Warden</td>
+<td>14</td>
+<td>1900 ⇒ <strong>4400</strong></td>
+</tr>
+<tr>
+<td>What Walks on Kern</td>
+<td>16</td>
+<td>2400 ⇒ <strong>4800</strong></td>
+</tr>
+<tr>
+<td>The Thing in the Fold</td>
+<td>18</td>
+<td>2900 ⇒ <strong>5200</strong></td>
+</tr>
+<tr>
+<td>The Pan's Own</td>
+<td>20</td>
+<td>3400 ⇒ <strong>5600</strong></td>
+</tr>
+</tbody>
+</table>
+<p>A fight now runs between about 61 and 156 seconds depending on your class and gear.</p>
+<p><strong>The spread between classes narrowed at the same time</strong>, which matters more: the slowest and fastest
+class at component tier 2 are now 32.2 and 53.0 damage a second where the old figures said 10.45 and
+18.31. A boss can be tuned for everybody at once in a way it could not be before.</p>
+<hr />
+<h2>The Trophy Board</h2>
+<p>A player, unprompted: <em>"The monster part balancing is weird. They sell for like 4 copper. I can kill 2
+zombies and get more gold than killing a named monster part."</em></p>
+<p>He was right, and understated it. The board's own rule is that a lot pays between a quarter and a half
+again the coin the kills that filled it already paid. <strong>All 23 rows were outside it.</strong></p>
+<ul>
+<li><strong>HOUND HACKLE</strong> 16 kills worth 128 coin, lot paid 23 — <strong>0.18×</strong></li>
+<li><strong>BENT STRUT</strong> 9 kills worth 72, lot paid 19 — <strong>0.26×</strong></li>
+<li>
+<p><strong>BRINE BEZOAR</strong> 9 kills worth 72, lot paid 35 — <strong>0.49×</strong></p>
+</li>
+<li>
+<p><strong>EVERY TROPHY LOT</strong> ⇒ repriced to <strong>1.35× the kills that fill it</strong></p>
+</li>
+<li class="change"><span class="what"><strong>BOARD TOTAL</strong></span><span class="old">692</span><span class="arrow">→</span><span class="new"><strong>1056</strong></span></li>
+<li class="change"><span class="what"><strong>GOLD PER KILL</strong></span><span class="old">5</span><span class="arrow">→</span><span class="new"><strong>4</strong></span></li>
+</ul>
+<p>Killing pays slightly less and the board pays properly, so hunting a named part is worth the walk. An
+hour at level 20 goes from about 3420 coin to about 2700 from kills alone, with the board making up the
+difference and more.</p>
+<p>Every blessing fee was re-derived from the new income so the same amount of play still buys a rung.</p>
+<hr />
+<h2>Quests</h2>
+<p><strong>Listening to somebody's story advanced your questline</strong></p>
+<ul>
+<li class="change"><span class="what"><strong>A TOWNSPERSON'S STORY AND HER QUEST CHAIN</strong></span><span class="old">Shared one counter</span><span class="arrow">→</span><span class="new"><strong>Separate</strong></span></li>
+</ul>
+<p>Each townsperson kept one progress number per player, and two systems wrote it: "which step of this
+chain you are on", and "how many lines of her story you have heard". That was harmless until the
+endgame questline, some of whose chapters are given by townsfolk who also tell a story — so pressing
+<strong>Go on.</strong> to hear a line of one advanced your story quest by one.</p>
+<p>Characters who have already heard part of a story are read as having heard none; nothing is lost and
+nothing skips.</p>
+<p><strong>Greave's gate-clerk stood 132 blocks from where the quest said</strong></p>
+<ul>
+<li class="change"><span class="what"><strong>GATE-CLERK ULF ORM</strong></span><span class="old">At his seeded station inside the town</span><span class="arrow">→</span><span class="new"><strong>At the gate the arrow points to</strong></span></li>
+</ul>
+<p>Reported by a player standing on the spot the tracker named, with nobody there. The arrow was right:
+it reads the townsperson's own record, and that record had been moved out to the Ninth Gate when the
+admission arc was posted. What was never moved with it was the man. A townsperson whose job is a place
+is bound to a cell and walks back to it all day, and his was still the one the town's first furnishing
+gave him — so the record said one thing and his feet said another, 132 blocks apart, with nothing in
+the game able to notice.</p>
+<p>The record and the man are now bound together, and a town already standing repairs itself on its next
+tick rather than needing to be rebuilt. <strong>He is at −3915, 87, −4192.</strong></p>
+<hr />
+<h2>Weapons and the Forge</h2>
+<p><strong>Component tooltips</strong></p>
+<ul>
+<li class="change"><span class="what"><strong>STATS SHOWN</strong></span><span class="old">Every stat, whether or not your weapon uses it</span><span class="arrow">→</span><span class="new"><strong>Only the ones it uses</strong>, the rest
+  labelled "melee only", "bows and magic" or "bows only"</span></li>
+</ul>
+<p>A player reading a bow component saw a damage figure that a bow does not use.</p>
+<p><strong>Shortbow durability</strong></p>
+<p>A tier 2 shortbow was <strong>less durable than a tier 1 one</strong> — 285, 270, 325, 455, 600 across the ladder.
+The only backwards rung in the forge, and it came from component availability rather than design: the
+tier 1 ash limb is generous at 120 while both tier 2 limbs were thinner.</p>
+<ul>
+<li class="change"><span class="what"><strong>SINEW LIMB</strong></span><span class="old">50</span><span class="arrow">→</span><span class="new"><strong>90</strong></span></li>
+<li class="change"><span class="what"><strong>LAMINATE LIMB</strong></span><span class="old">100</span><span class="arrow">→</span><span class="new"><strong>115</strong></span></li>
+</ul>
+<p>The tier 2 limbs came up rather than tier 1 coming down, so nobody who already forged an ash limb finds
+it quietly worsened.</p>
+<p><strong>Forged shuriken</strong></p>
+<p>Every forged shuriken dealt 6 damage, whatever it was forged from. A tier 5 shuriken built from the
+best components in the game was a tier 1 shuriken.</p>
+<ul>
+<li class="change"><span class="what"><strong>DAMAGE, TIER 1</strong></span><span class="old">6</span><span class="arrow">→</span><span class="new"><strong>5.7</strong></span></li>
+<li class="change"><span class="what"><strong>DAMAGE, TIER 2</strong></span><span class="old">6</span><span class="arrow">→</span><span class="new"><strong>7.1</strong></span></li>
+<li class="change"><span class="what"><strong>DAMAGE, TIER 3</strong></span><span class="old">6</span><span class="arrow">→</span><span class="new"><strong>8.4</strong></span></li>
+<li class="change"><span class="what"><strong>DAMAGE, TIER 4</strong></span><span class="old">6</span><span class="arrow">→</span><span class="new"><strong>11.1</strong></span></li>
+<li class="change"><span class="what"><strong>DAMAGE, TIER 5</strong></span><span class="old">6</span><span class="arrow">→</span><span class="new"><strong>14.0</strong></span></li>
+<li class="change"><span class="what"><strong>TIME TO KILL AT TIER 5</strong></span><span class="old">17.9 s</span><span class="arrow">→</span><span class="new"><strong>7.7 s</strong></span></li>
+<li class="change"><span class="what"><strong>COOLDOWN</strong></span><span class="old">1.5 seconds</span><span class="arrow">→</span><span class="new">Unchanged</span></li>
+</ul>
+<p>A tier 1 shuriken is very slightly weaker, because 6 was more than its own components were worth.
+Everything above tier 1 is stronger. It remains a thrown opener rather than a damage weapon: spent when
+thrown, one target, about 9 damage a second at tier 5 against a dagger's ninety.</p>
+<hr />
+<h2>Archer</h2>
+<p><strong>Quiver</strong></p>
+<ul>
+<li class="change"><span class="what"><strong>ARROWS IN A WORN QUIVER</strong></span><span class="old">Not used</span><span class="arrow">→</span><span class="new"><strong>Used, after those in your pack</strong></span></li>
+</ul>
+<p>A quiver full of arrows did nothing for a bow. With no arrows in the pack the bow would not begin to
+draw, and gave no message explaining why, so a 220 coin quiver read as a broken bow.</p>
+<p>The order is unchanged apart from the new last step: the arrow in your other hand, then your pack, then
+your quiver. A special arrow kept in the pack is still the one fired first.</p>
+<hr />
+<h2>Things to Find</h2>
+<p><strong>Landmarks in the world</strong></p>
+<ul>
+<li class="change"><span class="what"><strong>STANDING</strong></span><span class="old">22 of 49</span><span class="arrow">→</span><span class="new"><strong>49 of 49</strong></span></li>
+</ul>
+<p>1.0.2's Known Issues said three explorable landmarks failed to place. Twenty-seven did. The tool that
+was checking them held them against a drawing of the island rather than against the island, and
+reported that all forty-nine were fine.</p>
+<p>The missing landmarks have been placed into the world already running. Where the ground at a landmark's
+drawn position could not hold it, it was moved to the nearest ground that could — between 8 and 90
+blocks in most cases, so each is still where its description says it is.</p>
+<p>Two moved much further, because nothing near where they were drawn would take them at all. Both are
+still on the side of the island their descriptions name:</p>
+<ul>
+<li>the <strong>Kernrib Adit</strong>, 321 blocks along the eastern range it is described as being driven into;</li>
+<li>the <strong>Halstone Vault</strong>, 524 blocks — still north-west of Asteryn, now 262 blocks out from the town
+  rather than 396, on the approach to the massif instead of high on its shoulder.</li>
+</ul>
+<p><strong>New worlds</strong></p>
+<ul>
+<li class="change"><span class="what"><strong>A LANDMARK WHOSE GROUND REFUSES IT</strong></span><span class="old">Places nothing, permanently</span><span class="arrow">→</span><span class="new">Searches outward up to 96 blocks</span></li>
+</ul>
+<p>A world's landmark positions are drawn on a map, and the fine detail of the ground is different in
+every world — the island's shape is fixed but its rock is not. A landmark whose drawn position was
+unsuitable used to place nothing at all, for the life of that world. It now looks for nearby ground
+that will take it, under exactly the same rules.</p>
+<p><strong>Known duplicate</strong></p>
+<p>Four cairns stand in the Barrow Fells where there should be one. Three of them were placed by the
+correction above, which ran in several passes and until the last one had no way to ask the world what
+it already contained. They are ordinary caches with ordinary contents.</p>
+<hr />
+<h2>Creatures</h2>
+<p><strong>Wildlife</strong></p>
+<ul>
+<li class="change"><span class="what"><strong>ANIMALS AN OVERFULL AREA LOSES</strong></span><span class="old">None</span><span class="arrow">→</span><span class="new"><strong>Those out of your sight, down to the herd size</strong></span></li>
+</ul>
+<p>On 19 September creatures were made permanent so that a server restart could not empty a hunting
+ground. That also made every animal the world's wildlife system placed impossible for it to remove, so
+worked country only ever filled up. Herds now return to their intended size, and nothing is ever
+removed within 32 blocks of you or in front of you.</p>
+<p>Creatures you have named, and creatures placed deliberately, are still never removed.</p>
+<p><strong>Mine adits</strong></p>
+<ul>
+<li class="change"><span class="what"><strong>HIGHEST GROUND AN ADIT MAY BE DRIVEN INTO</strong></span><span class="old">y 176</span><span class="arrow">→</span><span class="new"><strong>y 200</strong></span></li>
+</ul>
+<hr />
+<h2>Appearance</h2>
+<p><strong>Skins</strong></p>
+<ul>
+<li class="change"><span class="what"><strong>YOUR SKIN ON THIS SERVER</strong></span><span class="old">The character name's</span><span class="arrow">→</span><span class="new"><strong>Your account's</strong></span></li>
+</ul>
+<p>The server runs without Mojang authentication, so a skin has to be fetched deliberately. It now comes
+from your account name rather than the name your character goes by on the island.</p>
+<hr />
+<h2>Server</h2>
+<p><strong>The Training Grounds door</strong></p>
+<ul>
+<li class="change"><span class="what"><strong>WHERE THE PRACTICE MODE IS REFUSED</strong></span><span class="old">On the client only</span><span class="arrow">→</span><span class="new"><strong>On the server</strong></span></li>
+</ul>
+<p>The main-menu button was withdrawn after it cost a player his inventory twice, but that withdrawal only
+ever reached clients that updated. Anybody still on an older pack still had the button, and pressing it
+ran against a server that would happily let them in. A client-side withdrawal is a request, not a
+guarantee.</p>
+<p><strong>New gamemaster commands</strong></p>
+<ul>
+<li><code>/arcana landmark list [prefix]</code> — everything this world has placed.</li>
+<li><code>/arcana landmark forget &lt;id&gt;</code> — drops a catalogue entry, leaving its blocks.</li>
+</ul>
+<p>Nothing could previously ask a running world what it contained, which is how the duplicate cairns above
+came to be placed.</p>
+<hr />
+<h2>Known Issues</h2>
+<ul>
+<li><strong>The Training Grounds are still withdrawn.</strong> The practice mode, the firing range and the weapon rack
+  all exist, but the button is removed and the server refuses the door. Every way <em>out</em> of the arena is
+  a separate code path and two of them handed a player back into the world before returning their
+  inventory. Nothing was ever lost, and it is not going in front of players until the whole cycle has
+  been driven end to end.</li>
+<li><strong>Four cairns stand in the Barrow Fells</strong> where there should be one. See <em>Things to Find</em>.</li>
+</ul></article>
+<article id="v1-0-2"><h1>Arcana Patch 1.0.2</h1>
+<p>Released 20 September 2026.</p>
+<p>This patch reworks the Assassin, adds the first act of an endgame questline, adds a Training Grounds
+practice mode, and gives every character health as they level. It also corrects a crafting recipe that
+could not be made, a quest step nobody could follow, and four objectives that pointed at the wrong
+person.</p>
+<p><strong>Existing worlds and characters carry over.</strong> No save data is reset by this patch. Skill points already
+spent stay spent, and the new health is applied to your existing character the next time you log in.</p>
+<p><strong>All players need this client update.</strong> Quest text, the new items and the Training Grounds button are
+client-side.</p>
+<hr />
+<h2>Patch Highlights</h2>
+<ul>
+<li>The Assassin is reworked: <strong>Wound</strong>, a new stacking effect, plus shurikens and three daggers that now
+  do different jobs.</li>
+<li><strong>Characters gain health as they level.</strong> Previously they gained almost none.</li>
+<li><strong>An endgame questline begins</strong> — its first chapter, for characters from level 8.</li>
+<li>Shears could not be crafted. A component recipe was using the same shape.</li>
+</ul>
+<hr />
+<h2>Classes</h2>
+<h3>Assassin</h3>
+<p>The Assassin had <strong>no unconditional damage of any kind</strong>. Her entire offensive kit was a backstab
+bonus, which returns nothing unless she is behind the target — and creatures in this game turn to face
+you. Head-on she was swinging raw weapon damage with a health penalty and no bonus at all.</p>
+<p><strong>Melee Damage</strong></p>
+<ul>
+<li class="change"><span class="what"><strong>ALL MELEE HITS</strong></span><span class="old">+0%</span><span class="arrow">→</span><span class="new"><strong>+20%</strong></span></li>
+</ul>
+<p>This applies whether or not she is behind the target.</p>
+<p><strong>Backstab Arc</strong></p>
+<ul>
+<li class="change"><span class="what"><strong>ARC COUNTED AS BEHIND</strong></span><span class="old">120 degree rear cone</span><span class="arrow">→</span><span class="new"><strong>180 degrees</strong>, anything past the target's shoulder</span></li>
+</ul>
+<p>The backstab multiplier is unchanged at 1.75, or 2.15 with The Deeper Cut.</p>
+<p><strong>A Kill Restores Full Health (New)</strong></p>
+<ul>
+<li class="change"><span class="what"><strong>ON LANDING A KILLING BLOW</strong></span><span class="old">No effect</span><span class="arrow">→</span><span class="new"><strong>Health restored to maximum</strong></span></li>
+</ul>
+<p>Class-wide and unconditional. No skill point buys it. It is a reward for finishing a fight and not a way
+out of one going badly: a bad opening still kills you, and a good one leaves you whole for the next
+fight. A creature that bleeds to death from Wound counts as your kill.</p>
+<p><strong>Wound (New)</strong></p>
+<p>Your melee hits stack a Wound on a creature. <strong>Each creature keeps its own count.</strong></p>
+<ul>
+<li class="change"><span class="what"><strong>STACKS</strong></span><span class="old">N/A</span><span class="arrow">→</span><span class="new"><strong>Up to 3</strong>, one per melee hit</span></li>
+<li class="change"><span class="what"><strong>ARMOUR IGNORED</strong></span><span class="old">0%</span><span class="arrow">→</span><span class="new"><strong>25% per stack</strong> (75% at three)</span></li>
+<li class="change"><span class="what"><strong>DAMAGE</strong></span><span class="old">+0%</span><span class="arrow">→</span><span class="new"><strong>+15% per stack</strong> (+45% at three)</span></li>
+<li class="change"><span class="what"><strong>BLEED</strong></span><span class="old">None</span><span class="arrow">→</span><span class="new"><strong>2 damage per second per stack</strong></span></li>
+<li class="change"><span class="what"><strong>AT THREE STACKS</strong></span><span class="old">N/A</span><span class="arrow">→</span><span class="new"><strong>+25% damage</strong> to that creature while you stay on it</span></li>
+<li class="change"><span class="what"><strong>DECAY</strong></span><span class="old">N/A</span><span class="arrow">→</span><span class="new">5 seconds after your last hit <strong>on that creature</strong></span></li>
+<li class="change"><span class="what"><strong>AGAINST PLAYERS</strong></span><span class="old">N/A</span><span class="arrow">→</span><span class="new"><strong>Does not apply</strong></span></li>
+</ul>
+<p>Leaving a creature does not carry its Wound to the next one, which starts at zero.</p>
+<p>Only five creatures in the game have any armour at all — the Boltcairn (12), Slabback (10), Stonelung
+(8), Hollowbole (6) and Longhand (3). Every other creature has none. Armour shred alone would therefore
+have done nothing in most fights, which is why Wound raises damage as well as shredding.</p>
+<p><strong>Daggers</strong></p>
+<p>Each pattern now does a different job. No new items.</p>
+<ul>
+<li class="change"><span class="what"><strong>FANG</strong></span><span class="old">2.4</span><span class="arrow">→</span><span class="new"><strong>2.6 attacks per second</strong>. Damage 0.5 ⇒ 0.4</span></li>
+<li class="change"><span class="what"><strong>STILETTO</strong></span><span class="old">2.9</span><span class="arrow">→</span><span class="new"><strong>2.2 attacks per second</strong>. Damage 0.0 ⇒ <strong>0.6</strong>. Durability 35 ⇒ <strong>45</strong></span></li>
+<li><strong>RIPPER</strong> Unchanged</li>
+</ul>
+<p><strong>Shurikens (New)</strong></p>
+<p>Held in the offhand and thrown with right-click while a dagger stays in your main hand. A shuriken flies
+flat and <strong>passes through every creature in its path</strong>, damaging each one, then disappears.</p>
+<ul>
+<li class="change"><span class="what"><strong>RANGE</strong></span><span class="old">N/A</span><span class="arrow">→</span><span class="new"><strong>12 blocks</strong>, then gone. It does not arc, land, or drop</span></li>
+<li class="change"><span class="what"><strong>DAMAGE</strong></span><span class="old">N/A</span><span class="arrow">→</span><span class="new"><strong>6</strong> forged, <strong>3.5</strong> crude, to every creature it passes through</span></li>
+<li class="change"><span class="what"><strong>COOLDOWN</strong></span><span class="old">N/A</span><span class="arrow">→</span><span class="new"><strong>1.5 seconds</strong> between throws</span></li>
+<li class="change"><span class="what"><strong>WOUND</strong></span><span class="old">N/A</span><span class="arrow">→</span><span class="new"><strong>Does not apply a stack.</strong> Wound is earned in melee</span></li>
+<li class="change"><span class="what"><strong>OTHER CLASSES</strong></span><span class="old">N/A</span><span class="arrow">→</span><span class="new"><strong>Cannot throw them</strong>, crafted or forged</span></li>
+<li class="change"><span class="what"><strong>CRAFTING</strong></span><span class="old">N/A</span><span class="arrow">→</span><span class="new">4 iron nuggets in a ring makes 4 Crude Shurikens. The stronger one is forged at a
+  bench from components</span></li>
+</ul>
+<p><strong>Movement Speed</strong></p>
+<ul>
+<li class="change"><span class="what"><strong>OUT OF COMBAT</strong></span><span class="old">+15%</span><span class="arrow">→</span><span class="new">+15%, unchanged</span></li>
+<li class="change"><span class="what"><strong>IN COMBAT</strong></span><span class="old">+15%</span><span class="arrow">→</span><span class="new"><strong>+15%, plus a further 10%</strong> while a fight is live</span></li>
+</ul>
+<p><strong>Class Tree Levels</strong></p>
+<p>Vanish is the Assassin's core loop — crouch during a fight, drop off every enemy's target list, and The
+Opening's double damage becomes usable again. It required level 8, which is where the storyline ends, so
+the loop did not exist for the whole of the content.</p>
+<table>
+<thead>
+<tr>
+<th>Passive</th>
+<th>Was</th>
+<th>Now</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The Opening</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Low Profile</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td><strong>Vanish</strong></td>
+<td><strong>8</strong></td>
+<td><strong>2</strong></td>
+</tr>
+<tr>
+<td>The Deeper Cut</td>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Quick Feet</td>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr>
+<td>No Witnesses</td>
+<td>14</td>
+<td><strong>5</strong></td>
+</tr>
+<tr>
+<td>Off Balance</td>
+<td>10</td>
+<td><strong>6</strong></td>
+</tr>
+<tr>
+<td>The Last Light</td>
+<td>12</td>
+<td><strong>7</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Existing Assassins can buy these immediately at their current level.</p>
+<hr />
+<h2>Progression</h2>
+<p><strong>Health Per Level</strong></p>
+<p>A health curve existed but was scaled to a level cap of 50, which this game does not have. A character
+had therefore gained <strong>14% of the intended amount by the end of the storyline</strong> and 39% at the cap. A
+level 8 Assassin had 20.6 health against a level 1's 18.0.</p>
+<ul>
+<li class="change"><span class="what"><strong>HEALTH PER LEVEL</strong></span><span class="old">+0.6% of base</span><span class="arrow">→</span><span class="new"><strong>+7.89% of base</strong></span></li>
+<li class="change"><span class="what"><strong>AT LEVEL 8</strong></span><span class="old">+5%</span><span class="arrow">→</span><span class="new"><strong>+55%</strong></span></li>
+<li class="change"><span class="what"><strong>AT LEVEL 20</strong></span><span class="old">+39%</span><span class="arrow">→</span><span class="new"><strong>+150%</strong></span></li>
+</ul>
+<p>This is a percentage, so the differences between classes are preserved at every level. It applies to
+existing characters on your next login.</p>
+<p><strong>This is not the whole fix.</strong> Every class still dies faster at level 8 than at level 1 against the same
+creature, because new characters receive a large damage reduction that is removed at level 5. See Known
+Issues.</p>
+<hr />
+<h2>Combat Balance</h2>
+<p><strong>Every storyline fight has been rebalanced</strong> and is now measured for all four classes against the
+creature its own step sends them at.</p>
+<p><strong>The early-game damage grace</strong></p>
+<p>New characters took 65% less damage until level 5, and health grows about 8% a level — so the game
+withdrew a 2.86× protection against a 32% gain, and <strong>you died faster at level 8 than at level 1</strong>.</p>
+<ul>
+<li class="change"><span class="what"><strong>DAMAGE TAKEN AT LEVEL 1</strong></span><span class="old">35%</span><span class="arrow">→</span><span class="new"><strong>60%</strong></span></li>
+<li class="change"><span class="what"><strong>SECONDS TO DIE, LEVEL 1</strong></span><span class="old">10.3</span><span class="arrow">→</span><span class="new"><strong>6.7</strong></span></li>
+<li class="change"><span class="what"><strong>SECONDS TO DIE, LEVEL 5</strong></span><span class="old">4.7</span><span class="arrow">→</span><span class="new"><strong>5.3</strong></span></li>
+<li class="change"><span class="what"><strong>SECONDS TO DIE, LEVEL 20</strong></span><span class="old">9.0</span><span class="arrow">→</span><span class="new"><strong>10.0</strong></span></li>
+</ul>
+<p>Every level now sits above the five-second survival floor, and the swing across the early game is 1.26×
+where it was 2.86×.</p>
+<p><strong>Creatures</strong></p>
+<p>Health below is the creature's base. What you actually fight is 3.3× this.</p>
+<ul>
+<li class="change"><span class="what"><strong>STONELUNG</strong></span><span class="old">70</span><span class="arrow">→</span><span class="new"><strong>16</strong> health, 12 ⇒ <strong>4.5</strong> damage <em>(234 ⇒ 53 as met; keeps its armour)</em></span></li>
+<li class="change"><span class="what"><strong>BLANKMAW</strong></span><span class="old">44</span><span class="arrow">→</span><span class="new"><strong>25</strong> health, 9 ⇒ <strong>4.5</strong> damage</span></li>
+<li class="change"><span class="what"><strong>REEDBACK</strong></span><span class="old">12</span><span class="arrow">→</span><span class="new"><strong>24</strong> health, 4 ⇒ <strong>3.5</strong> damage <em>(it died in 2.2 seconds)</em></span></li>
+<li class="change"><span class="what"><strong>RIMEWING</strong></span><span class="old">24</span><span class="arrow">→</span><span class="new"><strong>25</strong> health, 10 ⇒ <strong>5</strong> damage</span></li>
+<li class="change"><span class="what"><strong>TIDEPALE HERON</strong></span><span class="old">26</span><span class="arrow">→</span><span class="new"><strong>25</strong> health, 9 ⇒ <strong>4.5</strong> damage</span></li>
+<li class="change"><span class="what"><strong>CALLSTAND</strong></span><span class="old">14</span><span class="arrow">→</span><span class="new"><strong>20</strong> health</span></li>
+</ul>
+<p><strong>Step counts</strong></p>
+<ul>
+<li class="change"><span class="what"><strong>ONE ADMISSION STEP</strong></span><span class="old">Asked for too many kills</span><span class="arrow">→</span><span class="new"><strong>Halved</strong></span></li>
+<li class="change"><span class="what"><strong>ONE OPENING STEP</strong></span><span class="old">Asked for ten kills</span><span class="arrow">→</span><span class="new"><strong>Eight</strong></span></li>
+</ul>
+<p>The creatures they ask for roughly doubled in health in the same pass, so the old counts would have been
+twice the errand they were written as.</p>
+<hr />
+<h2>Bosses</h2>
+<p><strong>Six bosses are now part of the storyline.</strong> Before this patch, no quest step in the game named one,
+and you could finish every chain without meeting any.</p>
+<p>Each is balanced for the level that meets it:</p>
+<ul>
+<li><strong>HALLOWHORN</strong> Level 8 — 1,100 health, 6 damage</li>
+<li><strong>SHE WHO SALTS THE FORD</strong> Level 11 — 1,500 health, 7 damage</li>
+<li><strong>THE SHEERWALL WARDEN</strong> Level 14 — 1,900 health, 8 damage</li>
+<li><strong>WHAT WALKS ON KERN</strong> Level 16 — 2,400 health, 9 damage</li>
+<li><strong>THE THING IN THE FOLD</strong> Level 18 — 2,900 health, 10 damage</li>
+<li><strong>THE PAN'S OWN</strong> Level 20 — 3,400 health, 11 damage</li>
+</ul>
+<p>Fights run 90 to 160 seconds depending on your weapon. All six already had three phases with their own
+mechanics; what changed is that the storyline now sends you to them at a level that can fight them.</p>
+<hr />
+<h2>Skins</h2>
+<ul>
+<li class="change"><span class="what"><strong>PLAYER SKINS</strong></span><span class="old">Default only</span><span class="arrow">→</span><span class="new"><strong>Your real skin</strong></span></li>
+</ul>
+<p>This server does not authenticate with Mojang, so no skin data ever arrived and everyone showed a
+default. The server now looks up each name and applies the skin that account actually owns. A name with
+no account simply shows the default, as before.</p>
+<hr />
+<h2>Quests</h2>
+<p><strong>An endgame questline (New)</strong></p>
+<p>The storyline previously ended at about level 8 with the cap at 20, and nothing pointed anywhere
+afterwards. This is the first chapter of a questline that runs to the cap.</p>
+<ul>
+<li class="change"><span class="what"><strong>AVAILABLE AT</strong></span><span class="old">N/A</span><span class="arrow">→</span><span class="new"><strong>Level 8</strong>, after the fourth town admits you</span></li>
+</ul>
+<p><strong>An admission step nobody could follow</strong></p>
+<p>One admission step asked you to find something far from its giver, and stated outright that it would
+not say where.</p>
+<ul>
+<li class="change"><span class="what"><strong>WHAT YOU ARE LOOKING FOR</strong></span><span class="old">Vague</span><span class="arrow">→</span><span class="new"><strong>Named plainly</strong>, and described by what it looks like</span></li>
+<li class="change"><span class="what"><strong>DIRECTION</strong></span><span class="old">Vague</span><span class="arrow">→</span><span class="new"><strong>A landmark to head past, and roughly how far</strong></span></li>
+<li class="change"><span class="what"><strong>HOW YOU KNOW YOU FOUND ONE</strong></span><span class="old">Not stated</span><span class="arrow">→</span><span class="new"><strong>Stated: your Chart records it within 48 blocks</strong></span></li>
+<li class="change"><span class="what"><strong>CHART LABEL</strong></span><span class="old">Vague</span><span class="arrow">→</span><span class="new"><strong>Says what it is</strong></span></li>
+</ul>
+<p><strong>Objectives That Point Nowhere</strong></p>
+<p>Four steps that ask you to find something had no location at all, and the quest arrow fell back to
+pointing at the person who had just told you to go looking.</p>
+<ul>
+<li><strong>WHICH STEPS</strong> One admission step in each of the four towns</li>
+<li class="change"><span class="what"><strong>QUEST ARROW</strong></span><span class="old">The quest giver</span><span class="arrow">→</span><span class="new"><strong>The nearest one you have not found yet</strong></span></li>
+</ul>
+<p>The arrow reads the world's own record of what it built, so it cannot point at something that is not
+there, and it moves to the next one as you find each.</p>
+<hr />
+<h2>Creatures and Spawning</h2>
+<p><strong>Spawn Mix</strong></p>
+<p>Every biome carried roughly 515 of vanilla monster spawn weight against roughly 15 to 25 from this mod's
+twelve creatures, so an Arcana creature was about one spawn in twenty.</p>
+<ul>
+<li class="change"><span class="what"><strong>SPIDER, ZOMBIE, SKELETON, SLIME, DROWNED</strong></span><span class="old">95–100</span><span class="arrow">→</span><span class="new"><strong>12</strong></span></li>
+<li class="change"><span class="what"><strong>BOGGED</strong></span><span class="old">100</span><span class="arrow">→</span><span class="new"><strong>8</strong></span></li>
+<li><strong>ENDERMAN, WITCH, ZOMBIE VILLAGER</strong> Unchanged</li>
+<li class="change"><span class="what"><strong>CHANCE A HOSTILE SPAWN IS AN ARCANA CREATURE</strong></span><span class="old">About 5%</span><span class="arrow">→</span><span class="new"><strong>About 23%</strong></span></li>
+</ul>
+<p><strong>The total number of creatures that spawn is unchanged.</strong> Spawn weights decide which creature appears,
+not how many.</p>
+<p><strong>Hunting Grounds</strong></p>
+<p>Creatures placed for a quest were not marked persistent, so Minecraft despawned them, and the
+replacement pass refused to run in daylight.</p>
+<ul>
+<li class="change"><span class="what"><strong>PERSISTENCE</strong></span><span class="old">Despawned like wild creatures</span><span class="arrow">→</span><span class="new"><strong>Persistent; they stay until killed</strong></span></li>
+<li class="change"><span class="what"><strong>REFILL</strong></span><span class="old">Night only</span><span class="arrow">→</span><span class="new"><strong>Any hour</strong></span></li>
+<li class="change"><span class="what"><strong>AFTER A SERVER RESTART</strong></span><span class="old">The ground could be empty until nightfall</span><span class="arrow">→</span><span class="new"><strong>Refills</strong></span></li>
+</ul>
+<hr />
+<h2>Crafting</h2>
+<p><strong>Shears</strong></p>
+<ul>
+<li class="change"><span class="what"><strong>SHEARS RECIPE</strong></span><span class="old">Produced a Plain Edge component</span><span class="arrow">→</span><span class="new"><strong>Produces shears</strong></span></li>
+</ul>
+<p>The Plain Edge recipe used one iron ingot in the top right and one in the middle left, which is the
+vanilla shears recipe exactly. Two recipes with the same shape means one wins, and the component did.</p>
+<ul>
+<li class="change"><span class="what"><strong>PLAIN EDGE PATTERN</strong></span><span class="old">Two iron ingots diagonal</span><span class="arrow">→</span><span class="new"><strong>Two iron ingots stacked vertically</strong></span></li>
+</ul>
+<p>The cost is unchanged at two iron ingots.</p>
+<hr />
+<h2>Server</h2>
+<ul>
+<li class="change"><span class="what"><strong>PVP</strong></span><span class="old">Enabled</span><span class="arrow">→</span><span class="new"><strong>Disabled</strong></span></li>
+</ul>
+<p>A server setting, and reversible without a patch.</p>
+<hr />
+<h2>Known Issues</h2>
+<ul>
+<li><strong>The Training Grounds are built but withdrawn.</strong> A practice mode on your own character — the
+  dimension, the firing range and the weapon rack all exist — but the main-menu button is removed for
+  now. Every way <em>out</em> of the arena turned out to be a separate code path, and two of them handed a
+  player back into the world before returning their inventory. Nothing was ever lost, but it is not
+  going in front of players until the whole cycle has been driven end to end.</li>
+<li>Several explorable landmarks — the Reeve Light, the Reeve's Quay and the Greyfold Drift — still fail
+  to place, as the terrain at their authored sites does not meet their requirements.</li>
+</ul></article>
+<article id="v1-0-1"><h1>Arcana Patch 1.0.1</h1>
+<p>Released 19 September 2026.</p>
+<p>This patch addresses issues found during the first multiplayer playtest. It covers class balance, night
+visibility, town protection, two interface screens that could not display all of their content, and a
+rewrite of every ability, blessing and passive description.</p>
+<p><strong>Existing worlds and characters carry over.</strong> No save data is reset by this patch.</p>
+<hr />
+<h2>Patch Highlights</h2>
+<ul>
+<li>The Archer's Hawk Eye passive works again, and headshots now deal additional damage.</li>
+<li>The Mage's basic attack costs mana and has a longer cooldown, with its damage raised to match.</li>
+<li>Night is significantly brighter than 1.0.0, and can now be adjusted in game.</li>
+<li>Towns can no longer be dug into. Fallow's protected area was too small and has been corrected.</li>
+<li>The Path screen can be dragged. Parts of it were previously unreachable at common resolutions.</li>
+</ul>
+<hr />
+<h2>Classes</h2>
+<h3>Archer</h3>
+<p><strong>Hawk Eye (Passive)</strong></p>
+<p>In 1.0.0 this passive had no effect. The outline it applies had been removed in an earlier change and
+was not restored.</p>
+<ul>
+<li class="change"><span class="what"><strong>EFFECT</strong></span><span class="old">No effect</span><span class="arrow">→</span><span class="new">Enemies you hit are outlined for 4 seconds</span></li>
+<li class="change"><span class="what"><strong>REFRESH</strong></span><span class="old">N/A</span><span class="arrow">→</span><span class="new">Refreshed on every hit</span></li>
+<li class="change"><span class="what"><strong>APPLIES TO</strong></span><span class="old">N/A</span><span class="arrow">→</span><span class="new">Creatures and players</span></li>
+</ul>
+<p><strong>Headshot Damage (New)</strong></p>
+<ul>
+<li class="change"><span class="what"><strong>HEADSHOT DAMAGE</strong></span><span class="old">+0%</span><span class="arrow">→</span><span class="new">+40%</span></li>
+<li><strong>BODY SHOT DAMAGE</strong> Unchanged</li>
+</ul>
+<p>Arrows to kill a same-level creature with level-appropriate gear:</p>
+<ul>
+<li class="change"><span class="what"><strong>TIER 1 LONGBOW, LEVEL 1</strong></span><span class="old">5 arrows</span><span class="arrow">→</span><span class="new">3 arrows</span></li>
+<li class="change"><span class="what"><strong>TIER 5 WARBOW, LEVEL 20</strong></span><span class="old">4 arrows</span><span class="arrow">→</span><span class="new">3 arrows</span></li>
+</ul>
+<p>Body shots are unchanged, so this bonus only applies when the shot lands on the head.</p>
+<p><strong>Bow</strong></p>
+<ul>
+<li class="change"><span class="what"><strong>FULL DRAW PARTICLE</strong></span><span class="old">Two white particles at full draw</span><span class="arrow">→</span><span class="new">Removed</span></li>
+</ul>
+<p>The full-draw sound and the bow's pull animation are unchanged and still indicate a fully drawn shot.</p>
+<h3>Mage</h3>
+<p><strong>Arcane Bolt (Basic Ability)</strong></p>
+<ul>
+<li class="change"><span class="what"><strong>MANA COST</strong></span><span class="old">0</span><span class="arrow">→</span><span class="new">5</span></li>
+<li class="change"><span class="what"><strong>COOLDOWN</strong></span><span class="old">0.6 seconds</span><span class="arrow">→</span><span class="new">1.1 seconds</span></li>
+<li class="change"><span class="what"><strong>DAMAGE</strong></span><span class="old">6</span><span class="arrow">→</span><span class="new">11</span></li>
+<li class="change"><span class="what"><strong>SEEK CONE</strong></span><span class="old">55 degrees</span><span class="arrow">→</span><span class="new">15 degrees</span></li>
+</ul>
+<p>Damage per second is unchanged. The bolt now fires less often and hits harder, and a missed bolt costs
+mana.</p>
+<p>The seek cone controls how far off-target a bolt may be loosed before it curves toward an enemy. At the
+previous value the cone was wider than the bolt's forward travel, meaning almost any bolt fired in the
+direction of an enemy would hit. Distance a shot may miss by and still connect:</p>
+<ul>
+<li class="change"><span class="what"><strong>AT 5 BLOCKS</strong></span><span class="old">7.1 blocks</span><span class="arrow">→</span><span class="new">1.3 blocks</span></li>
+<li class="change"><span class="what"><strong>AT 8 BLOCKS</strong></span><span class="old">11.4 blocks</span><span class="arrow">→</span><span class="new">2.1 blocks</span></li>
+<li class="change"><span class="what"><strong>AT 14 BLOCKS</strong></span><span class="old">20.0 blocks</span><span class="arrow">→</span><span class="new">3.8 blocks</span></li>
+</ul>
+<p><strong>Arcane Bolt</strong> also applied the vanilla Glowing effect to anything it hit for 3 seconds. This was
+unintended and has been removed.</p>
+<p><strong>Rune Ward</strong></p>
+<ul>
+<li class="change"><span class="what"><strong>MANA COST</strong></span><span class="old">26</span><span class="arrow">→</span><span class="new">16</span></li>
+</ul>
+<p>Arcane Bolt's new mana cost reduced the number of fights the Mage could sustain on a full mana bar from
+2.50 to 1.45. Rune Ward's cost was reduced to bring this back to 1.64.</p>
+<hr />
+<h2>Death</h2>
+<ul>
+<li class="change"><span class="what"><strong>EXPERIENCE LOST</strong></span><span class="old">0%</span><span class="arrow">→</span><span class="new">20% of progress toward the next level</span></li>
+<li class="change"><span class="what"><strong>LEVELS LOST</strong></span><span class="old">None</span><span class="arrow">→</span><span class="new">None</span></li>
+</ul>
+<p>Experience loss cannot take you below a level you have already reached. Coin loss is unchanged at 3%,
+capped at 500.</p>
+<hr />
+<h2>Night and Light</h2>
+<p><strong>Night Darkness</strong></p>
+<ul>
+<li class="change"><span class="what"><strong>DARKNESS STRENGTH</strong></span><span class="old">1.0</span><span class="arrow">→</span><span class="new">0.30</span></li>
+</ul>
+<p>At a representative midnight, open ground reads as the following light level:</p>
+<ul>
+<li><strong>VANILLA MINECRAFT</strong> 4.0</li>
+<li><strong>ARCANA 1.0.0</strong> 0.2</li>
+<li><strong>ARCANA 1.0.1</strong> 1.7</li>
+</ul>
+<p><strong>Brightness Slider</strong></p>
+<ul>
+<li class="change"><span class="what"><strong>MAXIMUM ALLOWED BRIGHTNESS</strong></span><span class="old">0.10</span><span class="arrow">→</span><span class="new">0.73</span></li>
+</ul>
+<p>In 1.0.0 the brightness slider was capped below Minecraft's own "Moody" setting, which meant the
+brightness option had no useful range. The new cap is above Minecraft's default of 0.50.</p>
+<p><strong>Carried Light Smoothing (New)</strong></p>
+<p>Held torches, lanterns and other light sources previously moved between whole blocks as you walked,
+causing the surrounding light to step up and down several times a second.</p>
+<ul>
+<li class="change"><span class="what"><strong>LIGHT POSITION</strong></span><span class="old">Snapped to the block you stand in</span><span class="arrow">→</span><span class="new">Snapped to a grid 2 steps finer</span></li>
+<li class="change"><span class="what"><strong>SMOOTHING STEPS</strong></span><span class="old">N/A</span><span class="arrow">→</span><span class="new">2 (adjustable, 1 to 16)</span></li>
+</ul>
+<p>This affects what is drawn only. Creatures still calculate light in whole blocks, so a creature's view
+of whether it stands in light is unchanged.</p>
+<p><strong>New Commands</strong></p>
+<ul>
+<li><code>/arcanahud night [0..1]</code> — sets night darkness. Applies immediately and is saved.</li>
+<li><code>/arcanahud light [1..16]</code> — sets carried light smoothing. Higher values are smoother and cost more
+  performance. Applies immediately and is saved.</li>
+</ul>
+<hr />
+<h2>Towns</h2>
+<p><strong>Protected Areas</strong></p>
+<ul>
+<li class="change"><span class="what"><strong>FALLOW PROTECTED RADIUS</strong></span><span class="old">96 blocks</span><span class="arrow">→</span><span class="new">169 blocks</span></li>
+</ul>
+<p>Fallow's protected area did not extend to its own wall. The wall itself and the outer ring of buildings
+could be broken by any player. Asteryn, Greave and Nought were unaffected.</p>
+<p>Fallow's protected area now also prevents PvP and mob spawning out to 169 blocks, matching the other
+three towns.</p>
+<p><strong>Overlapping Areas</strong></p>
+<ul>
+<li class="change"><span class="what"><strong>BUILD PERMISSION</strong></span><span class="old">Determined by the smallest area covering a block</span><span class="arrow">→</span><span class="new">Determined by all areas
+  covering a block</span></li>
+</ul>
+<p>Smaller areas inside a town, such as the Butts and the River Road, do not themselves forbid building.
+Previously one of these could override the town's protection for any block it covered.</p>
+<p><strong>Gamemaster Testing</strong></p>
+<ul>
+<li><strong><code>/arcana trespass on</code></strong> Removed guard exemption only ⇒ Removes guard and build exemptions</li>
+</ul>
+<hr />
+<h2>NPCs</h2>
+<p><strong>Staying at Post</strong></p>
+<p>The following roles now remain at their station at all times: Keeper, Vendor, Crafter, Master, Herald,
+Lorekeeper, Wayfinder, Chronicler, Mayor.</p>
+<ul>
+<li class="change"><span class="what"><strong>TOWN RITES</strong></span><span class="old">Purposeful NPCs attended</span><span class="arrow">→</span><span class="new">They do not attend; residents fill the seats</span></li>
+<li class="change"><span class="what"><strong>SIEGES AND NEARBY FIGHTS</strong></span><span class="old">Purposeful NPCs sheltered for 30 seconds</span><span class="arrow">→</span><span class="new">They remain at their post</span></li>
+</ul>
+<p>Guards, Soldiers, Captains and Residents are unchanged and continue to move. A town's watch still
+responds to alarms.</p>
+<p><strong>Stuck NPCs (Bug Fix)</strong></p>
+<p>An NPC whose path to her station failed would remain where she stopped permanently. For a shopkeeper
+this appeared to the player as a permanently closed counter. NPCs now retry after one minute.</p>
+<hr />
+<h2>Quests</h2>
+<p><strong>Spend a Skill Point</strong></p>
+<ul>
+<li class="change"><span class="what"><strong>COUNTS</strong></span><span class="old">Passives only</span><span class="arrow">→</span><span class="new">Passives and ability ranks</span></li>
+</ul>
+<p>A skill point can be spent on a passive or on an ability rank. The step previously counted only
+passives, so a player who had spent their points on ability ranks could not complete it and had to reach
+the next level to gain another point.</p>
+<p>This applies to existing characters immediately.</p>
+<hr />
+<h2>Interface</h2>
+<p><strong>Path Screen</strong></p>
+<p>Parts of the Path could not be reached at 1920x1080 on the default GUI scale. The panel required 496
+pixels of width and was given 456, and could not be scrolled horizontally.</p>
+<ul>
+<li class="change"><span class="what"><strong>PANNING</strong></span><span class="old">None</span><span class="arrow">→</span><span class="new">Click and drag, clamped to the tree's bounds</span></li>
+<li class="change"><span class="what"><strong>ON OPEN</strong></span><span class="old">Top-left</span><span class="arrow">→</span><span class="new">Centred</span></li>
+<li class="change"><span class="what"><strong>EDGE INDICATORS</strong></span><span class="old">None</span><span class="arrow">→</span><span class="new">Arrows on any edge with more content beyond it</span></li>
+<li class="change"><span class="what"><strong>MOUSE WHEEL</strong></span><span class="old">Scrolls vertically</span><span class="arrow">→</span><span class="new">Scrolls vertically, pans horizontally when at a vertical limit</span></li>
+<li class="change"><span class="what"><strong>HINT TEXT</strong></span><span class="old">None</span><span class="arrow">→</span><span class="new">"Drag to move the Path", shown when no node is selected</span></li>
+</ul>
+<p><strong>Altar of Blessings</strong></p>
+<p>Long descriptions, blessings with four or more effects, and blessings with three materials could draw
+their text through the Attune button and past the bottom of the panel.</p>
+<ul>
+<li class="change"><span class="what"><strong>TEXT HEIGHT</strong></span><span class="old">Unbounded</span><span class="arrow">→</span><span class="new">Measured and clipped to the panel</span></li>
+<li class="change"><span class="what"><strong>EFFECT LINES</strong></span><span class="old">Single line</span><span class="arrow">→</span><span class="new">Wrapped</span></li>
+<li class="change"><span class="what"><strong>OVERFLOW INDICATOR</strong></span><span class="old">None</span><span class="arrow">→</span><span class="new">Arrows shown when content continues above or below</span></li>
+<li class="change"><span class="what"><strong>MOUSE WHEEL</strong></span><span class="old">No effect</span><span class="arrow">→</span><span class="new">Scrolls the detail column</span></li>
+</ul>
+<hr />
+<h2>Text</h2>
+<p><strong>Descriptions Rewritten</strong></p>
+<p>77 descriptions have been rewritten in plainer language: 7 abilities, 18 blessings, 34 passives and 16
+forge weapon traits. Each now states what the effect does, its value and its condition.</p>
+<p>Creature names, town dialogue and NPC speech are unchanged.</p>
+<p><strong>Corrections</strong></p>
+<p>Four descriptions did not match the behaviour of the thing they described:</p>
+<ul>
+<li class="change"><span class="what"><strong>UNHURT CONDITION</strong></span><span class="old">"while nothing has touched you"</span><span class="arrow">→</span><span class="new">"while at almost full health". The condition
+  applies at 95% health or above.</span></li>
+<li class="change"><span class="what"><strong>PHASE</strong></span><span class="old">Did not mention the tunnel closing</span><span class="arrow">→</span><span class="new">States that the tunnel seals after 7 seconds.</span></li>
+<li class="change"><span class="what"><strong>FLETCHER</strong></span><span class="old">"Most arrows that land come back"</span><span class="arrow">→</span><span class="new">"About 6 in every 10". The chance is 60%.</span></li>
+<li class="change"><span class="what"><strong>RUNE WARD</strong></span><span class="old">Described as a 3 block radius</span><span class="arrow">→</span><span class="new">Described as roughly 6 blocks across. The radius is 3.2.</span></li>
+</ul>
+<hr />
+<h2>Known Issues</h2>
+<ul>
+<li>Several explorable landmarks — the Reeve Light, the Reeve's Quay and the Greyfold Drift — currently
+  fail to place, as the terrain at their authored sites does not meet their requirements. They will not
+  appear in the world.</li>
+<li>Two automated checks, <code>boot_leaves_no_litter</code> and <code>wildlife_tends_a_country</code>, fail intermittently
+  depending on terrain near the test area. Neither affects gameplay.</li>
+</ul></article>
+</main>
+</div>
+</body>
+</html>
