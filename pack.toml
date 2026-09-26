@@ -1,0 +1,12 @@
+name = "Arcana"
+version = "1.6.0"
+pack-format = "packwiz:1.1.0"
+
+[index]
+file = "index.toml"
+hash-format = "sha256"
+hash = "3edf6131af64793076bb5d168a74a9b5ee91e7a160adbd541044a44b233a6569"
+
+[versions]
+minecraft = "26.2"
+fabric = "0.19.5"

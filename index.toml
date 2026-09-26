@@ -1,0 +1,18 @@
+hash-format = "sha256"
+
+[[files]]
+file = "config/arcana-client.properties"
+hash = "49d84493e7c81287a6a842a90cdfb8f71967efd54118ec1f1e3aa60cd12899b3"
+preserve = true
+
+[[files]]
+file = "mods/arcana-1.6.0.jar"
+hash = "9babf27ef322c3eb89334566c2bfc366a86bb5d2e5c34a3d699fc816d58f941f"
+
+[[files]]
+file = "mods/fabric-api-0.159.0+26.2.jar"
+hash = "3f3a5d96e6a8f554a72e71fb507d6a979ca16d9190c305ceb1300f1d01e733ee"
+
+[[files]]
+file = "mods/jei-26.2-fabric-30.32.0.221.jar"
+hash = "db1ea3fb7987751cd75763c56d64f2f281ed217a8fbe7af7e223aab923078d72"
