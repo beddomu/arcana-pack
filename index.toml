@@ -1,0 +1,43 @@
+hash-format = "sha256"
+
+[[files]]
+file = "config/arcana-client.properties"
+hash = "49d84493e7c81287a6a842a90cdfb8f71967efd54118ec1f1e3aa60cd12899b3"
+preserve = true
+
+[[files]]
+file = "mods/DistantHorizons-3.3.3-26.2-fabric-neoforge.pw.toml"
+hash = "a5976efc6aa02b5cfa9c78d209053a1210c3a793e75ad15f1f2ad333819d3b44"
+metafile = true
+
+[[files]]
+file = "mods/EuphoriaPatcher-1.10.5-r5.9.3-fabric.pw.toml"
+hash = "987716cb7ca491a5958b472c7f62ed5451fcff886a2082b4803a064c6b3a8bf2"
+metafile = true
+
+[[files]]
+file = "mods/arcana-1.8.11.jar"
+hash = "41420e79105be22c9d37ccd413f9540dd02b353b5b6e5f365744aadc8dea1fa0"
+
+[[files]]
+file = "mods/fabric-api-0.159.0+26.2.jar"
+hash = "3f3a5d96e6a8f554a72e71fb507d6a979ca16d9190c305ceb1300f1d01e733ee"
+
+[[files]]
+file = "mods/iris-fabric-1.11.4+mc26.2.pw.toml"
+hash = "4fd25b8bbef1e40144fc83b5d855f74cdd64017a19345d02f214040381a53973"
+metafile = true
+
+[[files]]
+file = "mods/jei-26.2-fabric-30.32.0.221.jar"
+hash = "db1ea3fb7987751cd75763c56d64f2f281ed217a8fbe7af7e223aab923078d72"
+
+[[files]]
+file = "mods/sodium-fabric-0.9.2+mc26.2.pw.toml"
+hash = "f85553f7d341d4a0a38bfbd6d93390e09c51b89612bde611453b4a18b6b143d3"
+metafile = true
+
+[[files]]
+file = "shaderpacks/ComplementaryReimagined_r5.9.3.pw.toml"
+hash = "9af585d49afbaea3783cb32bb72399bad04e9a30a03d357b1f75c7c32c594c6e"
+metafile = true
